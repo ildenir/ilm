@@ -70,7 +70,7 @@
       (message (format "Installing package %s" (symbol-name pack)))
       (package-install pack))))
 
-(ilm-install-packages 'projectile 'helm 'powerline 'yasnippet
+(ilm-install-packages 'projectile 'helm 'helm-projectile 'powerline 'yasnippet
 'magit 'markdown-mode)
 
 
@@ -83,9 +83,16 @@
 (powerline-default-theme)
 
 ;; Projectile
-
+(require 'projectile)
+(projectile-mode)
 
 ;; Helm
+(require 'helm)
+(helm-mode)
+
+;; Projectile Helm integration
+(require 'helm-projectile)
+(helm-projectile-on)
 
 ;; Yasnippet
 (require 'yasnippet)
