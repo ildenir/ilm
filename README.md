@@ -23,7 +23,7 @@ Execute o emacs com novas configuracoes
 ## Modos e Customizacoes
 
 Todos os pacotes da distribuicao estao instalados no diretorio do
-usuario **~/.ilm.d**. Para reinstalar tudo basta remover esse
+usuario `~/.ilm.d`. Para reinstalar tudo basta remover esse
 diretorio e re-executar emacs.
 
 ### Keymap
