@@ -1,0 +1,102 @@
+;;; init.el --- distribuicao pessoal emacs -*- lexical-binding:t -*-
+
+;; Copyright (C) 2017 Ildenir Barbosa
+
+;; Author: Ildenir Barbosa <il.denir@gmail.com>
+;; Created: Sat Jul 29 21:52:29 2017
+;; Version: 0.0
+;; Package-Requires: ((cl-lib "0.5"))
+;; Keywords: script, convenience
+;; URL: http://github.com/ildenir/ilm
+
+;; This file is not part of GNU Emacs.
+
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;;; Code:
+
+
+;;;;;;;;;;;;;;;;;;
+;; Config Emacs ;;
+;;;;;;;;;;;;;;;;;;
+
+(setq inhibit-startup-message t)
+
+;; disable backup
+(setq backup-inhibited t)
+;; disable auto save
+(setq auto-save-default nil)
+
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(setq show-paren-mode 1)
+(load-theme 'wombat)
+(windmove-default-keybindings)
+
+
+;;;;;;;;;;;;;;;;;;;;;;
+;; Package install  ;;
+;;;;;;;;;;;;;;;;;;;;;;
+(setq user-emacs-directory (expand-file-name "~/.ilm.d"))
+
+(package-initialize)
+(let ((repos '(("melpa" . "http://melpa.org/packages/")
+	      ("org" . "http://orgmode.org/elpa/")
+	      ("marmalade" . "http://marmalade-repo.org/packages/"))))
+  (dolist (repo repos)
+    (add-to-list 'package-archives repo)
+    (message (format "Add %s to package archive" (car repo)))))
+(package-refresh-contents)
+
+(defun ilm-install-packages(&rest packs)
+  "Instala pacotes se necessario"
+  (dolist (pack packs)
+    (message (format "Processando %s" (symbol-name pack)))
+    (unless (package-installed-p pack)
+      (message (format "Installing package %s" (symbol-name pack)))
+      (package-install pack))))
+
+(ilm-install-packages 'projectile 'helm 'powerline 'yasnippet
+'magit 'markdown-mode)
+
+
+;;;;;;;;;;;;;;;;;;;;;;
+;; Config packages  ;;
+;;;;;;;;;;;;;;;;;;;;;;
+
+;; Powerline
+(require 'powerline)
+(powerline-default-theme)
+
+;; Projectile
+
+
+;; Helm
+
+;; Yasnippet
+(require 'yasnippet)
+(yas-global-mode 1)
+
+
+;;;;;;;;;;;;;;;;;;
+;; Keybindings  ;;
+;;;;;;;;;;;;;;;;;;
+(global-set-key (kbd "C-x G") 'magit-status)
+(global-set-key (kbd "C-c w w") 'whitespace-mode)
+(global-set-key (kbd "C-c w c") 'whitespace-cleanup)
+
+;;; init.el ends here
