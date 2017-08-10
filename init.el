@@ -71,7 +71,7 @@
       (package-install pack))))
 
 (ilm-install-packages 'projectile 'helm 'helm-projectile 'powerline 'yasnippet
-'magit 'markdown-mode)
+'magit 'markdown-mode 'switch-window)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;
@@ -105,5 +105,12 @@
 (global-set-key (kbd "C-x G") 'magit-status)
 (global-set-key (kbd "C-c w w") 'whitespace-mode)
 (global-set-key (kbd "C-c w c") 'whitespace-cleanup)
+
+(require 'switch-window)
+;;(global-set-key (kbd "C-x o") 'switch-window)
+(global-set-key (kbd "C-x 1") 'switch-window-then-maximize)
+(global-set-key (kbd "C-x 2") 'switch-window-then-split-below)
+(global-set-key (kbd "C-x 3") 'switch-window-then-split-right)
+(global-set-key (kbd "C-x 0") 'switch-window-then-delete)
 
 ;;; init.el ends here
