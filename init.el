@@ -43,7 +43,7 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
-(setq show-paren-mode 1)
+(show-paren-mode t)
 (load-theme 'wombat)
 (windmove-default-keybindings)
 
@@ -61,9 +61,6 @@
     (add-to-list 'package-archives repo)
     (message (format "Add %s to package archive" (car repo)))))
 
-(unless (file-directory-p user-emacs-directory)
-  (package-refresh-contents))
-
 (defun ilm-install-packages(&rest packs)
   "Instala pacotes se necessario"
   (dolist (pack packs)
@@ -72,8 +69,10 @@
       (message (format "Installing package %s" (symbol-name pack)))
       (package-install pack))))
 
-(ilm-install-packages 'projectile 'helm 'helm-projectile 'powerline 'yasnippet
-'magit 'markdown-mode 'switch-window)
+(unless (file-directory-p user-emacs-directory)
+  (package-refresh-contents)
+  (ilm-install-packages 'projectile 'helm 'helm-projectile 'powerline 'yasnippet
+			'magit 'markdown-mode 'switch-window))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;
