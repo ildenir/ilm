@@ -60,7 +60,9 @@
   (dolist (repo repos)
     (add-to-list 'package-archives repo)
     (message (format "Add %s to package archive" (car repo)))))
-(package-refresh-contents)
+
+(unless (file-directory-p user-emacs-directory)
+  (package-refresh-contents))
 
 (defun ilm-install-packages(&rest packs)
   "Instala pacotes se necessario"
