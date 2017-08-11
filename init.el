@@ -58,8 +58,8 @@
 	      ("org" . "http://orgmode.org/elpa/")
 	      ("marmalade" . "http://marmalade-repo.org/packages/"))))
   (dolist (repo repos)
-    (add-to-list 'package-archives repo)
-    (message (format "Add %s to package archive" (car repo)))))
+    (add-to-list 'package-archives repo)))
+
 
 (defun ilm-install-packages(&rest packs)
   "Instala pacotes se necessario"
