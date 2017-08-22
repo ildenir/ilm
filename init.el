@@ -69,7 +69,8 @@
       (message (format "Installing package %s" (symbol-name pack)))
       (package-install pack))))
 
-(unless (file-directory-p user-emacs-directory)
+(unless (and (file-directory-p user-emacs-directory)
+	    (not (null (directory-files user-emacs-directory))))
   (package-refresh-contents)
   (ilm-install-packages 'projectile 'helm 'helm-projectile 'powerline 'yasnippet
 			'magit 'markdown-mode 'switch-window))
