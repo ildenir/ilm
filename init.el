@@ -52,6 +52,7 @@
 ;; Package install  ;;
 ;;;;;;;;;;;;;;;;;;;;;;
 (setq user-emacs-directory (expand-file-name "~/.ilm.d"))
+(setq package-user-dir user-emacs-directory)
 
 (package-initialize)
 (let ((repos '(("melpa" . "http://melpa.org/packages/")
