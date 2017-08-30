@@ -39,5 +39,5 @@ diretorio e re-executar emacs.
 
 
 **  Distros mais completas
- - [Emacs Prelude](https://github.com/bbatsov/prelude) : distribuicao para Emacs 24
- - [Spacemacs](https://github.com/syl20bnr/spacemacs)  : distribuicao ux baseada no vim
+ - [[https://github.com/bbatsov/prelude][Emacs Prelude]] : distribuicao para Emacs 24
+ - [[https://github.com/syl20bnr/spacemacs][Spacemacs]]  : distribuicao ux baseada no vim
