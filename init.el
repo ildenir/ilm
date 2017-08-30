@@ -101,6 +101,10 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
+;; Whitespace
+(require 'whitespace)
+(setq whitespace-style '(empty tabs lines-tail trailing))
+
 
 ;;;;;;;;;;;;;;;;;;
 ;; Keybindings  ;;
