@@ -21,6 +21,9 @@ Execute o emacs com novas configuracoes
 	ilm arquivo
 #+END_SRC
 
+Ou use os scripts =ilm= e =il=, para editar em mode grafico e
+terminal, respectivamente.
+
 ** Modos e Customizacoes
 
 Todos os pacotes da distribuicao estao instalados no diretorio do
