@@ -1,6 +1,6 @@
 #!/bin/bash
 DIR=`dirname $0`
-emacs -l $DIR/init.el -nw
+emacs -l $DIR/init.el -nw "$@"
 
 
 
