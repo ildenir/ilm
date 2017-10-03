@@ -2,15 +2,13 @@
 #+AUTHOR: Ildenir Barbosa
 #+STARTUP: showeverything
 
-*  ilm - distribuicao emacs minima
-
 Minhas configuracoes pessoais do emacs. Distribuicao minima com tema
 escuro.
 
 #+CAPTION: ilm screenshot
 [[screenshot.png]]
 
-** Uso
+* Uso
 
 Baixe o repositorio no diretorio ilm
 
@@ -28,13 +26,13 @@ Execute o emacs com novas configuracoes
 Ou use os scripts =ilm= e =il=, para editar em mode grafico e
 terminal, respectivamente.
 
-** Modos e Customizacoes
+* Modos e Customizacoes
 
 Todos os pacotes da distribuicao estao instalados no diretorio do
 usuario `~/.ilm.d`. Para reinstalar tudo basta remover esse
 diretorio e re-executar emacs.
 
-*** Keymap
+* Keymap
 
 
 | Keybinding | Descricao                     |
@@ -47,6 +45,6 @@ diretorio e re-executar emacs.
 
 
 
-**  Distros mais completas
+*  Distros mais completas
  - [[https://github.com/bbatsov/prelude][Emacs Prelude]] : distribuicao para Emacs 24
  - [[https://github.com/syl20bnr/spacemacs][Spacemacs]]  : distribuicao ux baseada no vim
