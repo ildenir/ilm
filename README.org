@@ -33,11 +33,13 @@ diretorio e re-executar emacs.
 *** Keymap
 
 
-| Keybinding | Descricao                  |
-|------------+----------------------------|
-| C-c w w    | Habilita whitespace-mode   |
-| C-c w c    | Executa whitespace cleanup |
-| C-x G      | Magit status               |
+| Keybinding | Descricao                     |
+|------------+-------------------------------|
+| C-c w w    | Habilita whitespace-mode      |
+| C-c w c    | Executa whitespace cleanup    |
+| C-x G      | Magit status                  |
+| M-y        | Helm exibe *kill ring* visual |
+| C-c h      | Helm command prefix           |
 
 
 

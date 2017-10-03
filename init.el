@@ -90,8 +90,10 @@
 (projectile-mode)
 
 ;; Helm
+;; Referencia: tuhdo.github.io/helm-intro.html
 (require 'helm)
-(helm-mode)
+(require 'helm-config)
+(helm-mode 1)
 
 ;; Projectile Helm integration
 (require 'helm-projectile)
@@ -112,6 +114,12 @@
 (global-set-key (kbd "C-x G") 'magit-status)
 (global-set-key (kbd "C-c w w") 'whitespace-mode)
 (global-set-key (kbd "C-c w c") 'whitespace-cleanup)
+
+(global-set-key (kbd "C-c h") 'helm-command-prefix)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "C-x C-b") 'helm-mini)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
 
 (require 'switch-window)
 ;;(global-set-key (kbd "C-x o") 'switch-window)
