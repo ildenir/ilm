@@ -1,3 +1,7 @@
+#+TITLE: ilm - distribuicao emacs minima
+#+AUTHOR: Ildenir Barbosa
+#+STARTUP: showeverything
+
 *  ilm - distribuicao emacs minima
 
 Minhas configuracoes pessoais do emacs. Distribuicao minima com tema
