@@ -107,6 +107,9 @@
 (require 'whitespace)
 (setq whitespace-style '(empty tabs lines-tail trailing))
 
+;; Org-mode
+(setq org-startup-folded nil)
+
 
 ;;;;;;;;;;;;;;;;;;
 ;; Keybindings  ;;
