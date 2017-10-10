@@ -10,38 +10,38 @@ escuro.
 
 * Uso
 
-Baixe o repositorio no diretorio ilm
+  Baixe o repositorio no diretorio ilm
 
-#+BEGIN_SRC sh
+  #+BEGIN_SRC sh
 	git clone https://github.com/ildenir/ilm.git ilm
 	alias ilm='emacs -l ~/ilm/init.el'
-#+END_SRC
+  #+END_SRC
 
-Execute o emacs com novas configuracoes
+  Execute o emacs com novas configuracoes
 
-#+BEGIN_SRC sh
+  #+BEGIN_SRC sh
 	ilm arquivo
-#+END_SRC
+  #+END_SRC
 
-Ou use os scripts =ilm= e =il=, para editar em mode grafico e
-terminal, respectivamente.
+  Ou use os scripts =ilm= e =il=, para editar em mode grafico e
+  terminal, respectivamente.
 
 * Modos e Customizacoes
 
-Todos os pacotes da distribuicao estao instalados no diretorio do
-usuario `~/.ilm.d`. Para reinstalar tudo basta remover esse
-diretorio e re-executar emacs.
+  Todos os pacotes da distribuicao estao instalados no diretorio do
+  usuario `~/.ilm.d`. Para reinstalar tudo basta remover esse
+  diretorio e re-executar emacs.
 
 * Keymap
 
 
-| Keybinding | Descricao                     |
-|------------+-------------------------------|
-| C-c w w    | Habilita whitespace-mode      |
-| C-c w c    | Executa whitespace cleanup    |
-| C-x G      | Magit status                  |
-| M-y        | Helm exibe *kill ring* visual |
-| C-c h      | Helm command prefix           |
+  | Keybinding | Descricao                     |
+  |------------+-------------------------------|
+  | C-c w w    | Habilita whitespace-mode      |
+  | C-c w c    | Executa whitespace cleanup    |
+  | C-x G      | Magit status                  |
+  | M-y        | Helm exibe *kill ring* visual |
+  | C-c h      | Helm command prefix           |
 
 
 
