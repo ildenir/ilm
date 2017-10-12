@@ -112,6 +112,12 @@
 ;; Org-mode
 (setq org-startup-folded nil)
 
+;; Paredit
+(require 'paredit)
+(add-hook 'lisp-mode-hook #'paredit-mode)
+(add-hook 'emacs-lisp-mode-hook #'paredit-mode)
+(add-hook 'lisp-interaction-mode-hook #'paredit-mode)
+
 
 ;;;;;;;;;;;;;;;;;;
 ;; Keybindings  ;;
