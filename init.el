@@ -68,13 +68,15 @@
     (message (format "Processando %s" (symbol-name pack)))
     (unless (package-installed-p pack)
       (message (format "Installing package %s" (symbol-name pack)))
-      (package-install pack))))
+      (condition-case condition
+	  (package-install pack t)
+	(error (message "error handlin") (package-refresh-contents) (package-install pack))))))
 
-(unless (and (file-directory-p user-emacs-directory)
-	    (not (null (directory-files user-emacs-directory))))
-  (package-refresh-contents)
-  (ilm-install-packages 'projectile 'helm 'helm-projectile 'powerline 'yasnippet
-			'magit 'markdown-mode 'switch-window))
+(ilm-install-packages 'projectile 'helm 'helm-projectile 'powerline 'yasnippet
+		       'magit 'markdown-mode 'switch-window 'paredit)
+
+(condition-case condit (package-install 'projectile)
+  (error (package-refresh-contents)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;
