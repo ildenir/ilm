@@ -126,6 +126,7 @@
 (global-set-key (kbd "C-x G") 'magit-status)
 (global-set-key (kbd "C-c w w") 'whitespace-mode)
 (global-set-key (kbd "C-c w c") 'whitespace-cleanup)
+(global-set-key (kbd "<f9>") 'other-frame)
 
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
 (global-set-key (kbd "M-x") 'helm-M-x)

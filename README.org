@@ -39,6 +39,7 @@ escuro.
   |------------+-------------------------------|
   | C-c w w    | Habilita whitespace-mode      |
   | C-c w c    | Executa whitespace cleanup    |
+  | <f9>       | Altera para outro frame       |
   | C-x G      | Magit status                  |
   | M-y        | Helm exibe *kill ring* visual |
   | C-c h      | Helm command prefix           |
