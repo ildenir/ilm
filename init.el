@@ -137,7 +137,6 @@
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 
 (require 'switch-window)
-;;(global-set-key (kbd "C-x o") 'switch-window)
 (global-set-key (kbd "C-x 1") 'switch-window-then-maximize)
 (global-set-key (kbd "C-x 2") 'switch-window-then-split-below)
 (global-set-key (kbd "C-x 3") 'switch-window-then-split-right)
