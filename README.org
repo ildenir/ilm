@@ -54,6 +54,10 @@ Utilize o prefixo =C-c h= antes do comandos seguinte
 | */*        | find             |
 | a          | apropos          |
 
+* Configuracoes
+- Regera automaticamente arquivos de TAGS do projeto *projectile*
+ao salvar algum arquivo.
+- Habilita limpeza automatica de espacos em branco ao salvar arquivo.
 
 *  Distros mais completas
  - [[https://github.com/bbatsov/prelude][Emacs Prelude]] : distribuicao para Emacs 24
