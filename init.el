@@ -108,7 +108,7 @@
 
 ;; Whitespace
 (require 'whitespace)
-(setq whitespace-style '(empty tabs lines-tail trailing))
+(setq whitespace-action '(auto-cleanup))
 
 ;; Org-mode
 (setq org-startup-folded nil)
