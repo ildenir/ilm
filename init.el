@@ -91,6 +91,8 @@
 ;; Projectile
 (require 'projectile)
 (projectile-mode)
+(add-hook 'before-save-hook #'projectile-regenerate-tags)
+(setq tags-revert-without-query t)
 
 ;; Helm
 ;; Referencia: tuhdo.github.io/helm-intro.html
