@@ -111,6 +111,7 @@
 ;; Whitespace
 (require 'whitespace)
 (setq whitespace-action '(auto-cleanup))
+(add-hook 'before-save-hook #'whitespace-cleanup)
 
 ;; Org-mode
 (setq org-startup-folded nil)
