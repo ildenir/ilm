@@ -74,7 +74,8 @@
 	(error (message "error handlin") (package-refresh-contents) (package-install pack))))))
 
 (ilm-install-packages 'projectile 'helm 'helm-projectile 'powerline 'yasnippet
-		       'magit 'markdown-mode 'switch-window 'paredit)
+		      'magit 'markdown-mode 'switch-window 'paredit
+		      'htmlize)
 
 (condition-case condit (package-install 'projectile)
   (error (package-refresh-contents)))
