@@ -35,14 +35,17 @@ escuro.
 * Keymap
 
 
-  | Keybinding | Descricao                     |
-  |------------+-------------------------------|
-  | C-c w w    | Habilita whitespace-mode      |
-  | C-c w c    | Executa whitespace cleanup    |
-  | <f9>       | Altera para outro frame       |
-  | C-x G      | Magit status                  |
-  | M-y        | Helm exibe *kill ring* visual |
-  | C-c h      | Helm command prefix           |
+  | Keybinding | Descricao                           |
+  |------------+-------------------------------------|
+  | C-c w w    | Habilita whitespace-mode            |
+  | C-c w c    | Executa whitespace cleanup          |
+  | <f9>       | Altera para outro frame             |
+  | C-x G      | Magit status                        |
+  | M-y        | Helm exibe *kill ring* visual       |
+  | C-c h      | Helm command prefix                 |
+  | M-<left>   | Scroll janela uma linha para cima   |
+  | M-<right>  | Scroll janela uma linha para abaixo |
+
 
 * Helm cheat sheet
 

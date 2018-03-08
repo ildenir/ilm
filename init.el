@@ -139,6 +139,8 @@
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-x C-b") 'helm-mini)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "M-<left>") 'scroll-up-line )
+(global-set-key (kbd "M-<right>") 'scroll-down-line )
 
 (require 'switch-window)
 (global-set-key (kbd "C-x 1") 'switch-window-then-maximize)
