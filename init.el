@@ -4,7 +4,7 @@
 
 ;; Author: Ildenir Barbosa <il.denir@gmail.com>
 ;; Created: Sat Jul 29 21:52:29 2017
-;; Version: 0.0
+;; Version: 0.1
 ;; Package-Requires: ((cl-lib "0.5"))
 ;; Keywords: script, convenience
 ;; URL: http://github.com/ildenir/ilm
