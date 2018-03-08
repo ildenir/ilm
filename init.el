@@ -75,7 +75,7 @@
 
 (ilm-install-packages 'projectile 'helm 'helm-projectile 'powerline 'yasnippet
 		      'magit 'markdown-mode 'switch-window 'paredit
-		      'htmlize)
+		      'htmlize 'flycheck)
 
 (condition-case condit (package-install 'projectile)
   (error (package-refresh-contents)))
@@ -122,6 +122,10 @@
 (add-hook 'lisp-mode-hook #'paredit-mode)
 (add-hook 'emacs-lisp-mode-hook #'paredit-mode)
 (add-hook 'lisp-interaction-mode-hook #'paredit-mode)
+
+;; Flycheck
+(require 'flycheck)
+(global-flycheck-mode)
 
 
 ;;;;;;;;;;;;;;;;;;
