@@ -52,6 +52,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; Package install  ;;
 ;;;;;;;;;;;;;;;;;;;;;;
+(require 'package)
 (setq user-emacs-directory (expand-file-name "~/.ilm.d"))
 (setq package-user-dir user-emacs-directory)
 
@@ -69,16 +70,13 @@
     (message (format "Processando %s" (symbol-name pack)))
     (unless (package-installed-p pack)
       (message (format "Installing package %s" (symbol-name pack)))
-      (condition-case condition
+      (condition-case nil
 	  (package-install pack t)
-	(error (message "error handlin") (package-refresh-contents) (package-install pack))))))
+	(error (message "error handling") (package-refresh-contents) (package-install pack))))))
 
 (ilm-install-packages 'projectile 'helm 'helm-projectile 'powerline 'yasnippet
 		      'magit 'markdown-mode 'switch-window 'paredit
 		      'htmlize 'flycheck)
-
-(condition-case condit (package-install 'projectile)
-  (error (package-refresh-contents)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;
