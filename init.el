@@ -113,6 +113,7 @@
 (add-hook 'before-save-hook #'whitespace-cleanup)
 
 ;; Org-mode
+(require 'org)
 (setq org-startup-folded nil)
 
 ;; Paredit
@@ -141,6 +142,8 @@
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "M-<left>") 'scroll-up-line )
 (global-set-key (kbd "M-<right>") 'scroll-down-line )
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c a") 'org-agenda)
 
 (require 'switch-window)
 (global-set-key (kbd "C-x 1") 'switch-window-then-maximize)

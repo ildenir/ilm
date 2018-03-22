@@ -45,6 +45,9 @@ escuro.
   | C-c h      | Helm command prefix                 |
   | M-<left>   | Scroll janela uma linha para cima   |
   | M-<right>  | Scroll janela uma linha para abaixo |
+  | C-c l      | Org mode store link                 |
+  | C-c a      | Org mode agenda                     |
+
 
 
 * Helm cheat sheet
