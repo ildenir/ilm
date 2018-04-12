@@ -26,6 +26,17 @@ escuro.
   Ou use os scripts =ilm= e =il=, para editar em mode grafico e
   terminal, respectivamente.
 
+  Inserindo configuracoes via =.emacs=
+
+  #+BEGIN_EXAMPLE
+  git clone https://github.com/ildenir/ilm.git ilm
+  cat << eof >> ~/.emacs
+    (add-to-list 'load-path (expand-file-name "~/ilm"))
+    (require 'ilm)
+  eof
+  emacs
+  #+END_EXAMPLE
+
 * Modos e Customizacoes
 
   Todos os pacotes da distribuicao estao instalados no diretorio do
