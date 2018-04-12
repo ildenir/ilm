@@ -1,4 +1,4 @@
 #!/bin/bash
 DIR=`dirname $0`
-emacs -l $DIR/init.el "$@"
+emacs -eval "(add-to-list 'load-path (expand-file-name \"$DIR\"))" -l $DIR/init.el "$@"
 
