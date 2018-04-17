@@ -51,7 +51,7 @@
 
 (ilm-install-packages 'projectile 'helm 'helm-projectile 'powerline 'yasnippet
 		      'magit 'markdown-mode 'switch-window 'paredit
-		      'htmlize 'flycheck)
+		      'htmlize 'flycheck 'org-bullets)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;
@@ -90,6 +90,9 @@
 ;; Org-mode
 (require 'org)
 (setq org-startup-folded nil)
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
 
 ;; Paredit
 (require 'paredit)
