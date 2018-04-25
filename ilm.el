@@ -51,7 +51,7 @@
 
 (ilm-install-packages 'projectile 'helm 'helm-projectile 'powerline 'yasnippet
 		      'magit 'markdown-mode 'switch-window 'paredit
-		      'htmlize 'flycheck 'org-bullets)
+		      'htmlize 'flycheck 'org-bullets 'column-enforce-mode)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;
@@ -103,6 +103,14 @@
 ;; Flycheck
 (require 'flycheck)
 (global-flycheck-mode)
+
+;; Colunm enforce
+(setq column-enforce-comments nil)
+(add-hook 'lisp-mode-hook #'column-enforce-mode)
+(add-hook 'emacs-lisp-mode-hook #'column-enforce-mode)
+(add-hook 'lisp-interaction-mode-hook #'column-enforce-mode)
+(add-hook 'c-mode-hook #'column-enforce-mode)
+(add-hook 'prog-mode-hook #'column-enforce-mode)
 
 
 ;;;;;;;;;;;;;;;;;;
