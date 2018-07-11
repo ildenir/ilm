@@ -24,6 +24,8 @@
 (load-theme 'wombat)
 (windmove-default-keybindings)
 (fset 'yes-or-no-p 'y-or-n-p)
+(custom-set-variables
+ '(blink-cursor-mode nil))
 (custom-set-faces
  '(cursor ((t (:background "dark orange")))))
 
