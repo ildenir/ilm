@@ -1,0 +1,83 @@
+#+TITLE: ilm - minimal emacs distro
+#+AUTHOR: Ildenir Barbosa
+#+STARTUP: showeverything
+
+This is my personal configuration for emacs. It is a minimal distro
+with dark theme.
+
+#+CAPTION: ilm screenshot
+[[screenshot.png]]
+
+* Usage
+
+  Download the git repository on directory ilm
+
+  #+BEGIN_SRC sh
+	git clone https://github.com/ildenir/ilm.git ilm
+	alias ilm='emacs -l ~/ilm/init.el'
+  #+END_SRC
+
+  Run emacs with new configurations
+
+  #+BEGIN_SRC sh
+	ilm arquivo
+  #+END_SRC
+
+  Or use the scripts =ilm= and =il=, to edit in graphical mode and
+  console mode, respectively.
+
+  Inserting configurations through  =.emacs=
+
+  #+BEGIN_EXAMPLE
+  git clone https://github.com/ildenir/ilm.git ilm
+  cat << eof >> ~/.emacs
+    (add-to-list 'load-path (expand-file-name "~/ilm"))
+    (require 'ilm)
+  eof
+  emacs
+  #+END_EXAMPLE
+
+* Modes and Customizations
+
+  All packages of the distro is installed on the directory `~/.ilm.d`.
+  To reinstall everything, remove this directory em rerun emacs.
+
+* Keymap
+
+
+  | Keybinding | Descricao                      |
+  |------------+--------------------------------|
+  | C-c w w    | Enable/Disable whitespace-mode |
+  | C-c w c    | Run whitespace cleanup         |
+  | <f9>       | Alternate other frame          |
+  | C-x G      | Magit status                   |
+  | M-y        | Helm show *kill ring* visual   |
+  | C-c h      | Helm command prefix            |
+  | M-<left>   | Scroll window one line up      |
+  | M-<right>  | Scroll window one line down    |
+  | C-c l      | Org mode store link            |
+  | C-c a      | Org mode agenda                |
+
+
+
+* Helm cheat sheet
+
+Use the prefix  =C-c h= before the following commands
+
+| Keybinding | Description      |
+|------------+------------------|
+| i          | semantic e imenu |
+| m          | woman            |
+| */*        | find             |
+| a          | apropos          |
+
+* Configuracoes
+- Automatically regenerate TAGS file of the Project when a file is saved.
+- Enable automatic whitespace cleanup when file is saved.
+
+*  Distros mais completas
+ - [[https://github.com/bbatsov/prelude][Emacs Prelude]] : distribuicao para Emacs 24
+ - [[https://github.com/syl20bnr/spacemacs][Spacemacs]]  : vim based ux distro
+
+* Referencia
+- [[http:tuhdo.github.io/helm-intro.html][A Package in a league of its own]]
