@@ -40,7 +40,7 @@ with dark theme.
 * Modes and Customizations
 
   All packages of the distro is installed on the directory `~/.ilm.d`.
-  To reinstall everything, remove this directory em rerun emacs.
+  To reinstall everything, remove this directory and reexecute emacs.
 
 * Keymap
 
