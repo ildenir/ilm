@@ -57,6 +57,8 @@ with dark theme.
   | M-<right>  | Scroll window one line down    |
   | C-c l      | Org mode store link            |
   | C-c a      | Org mode agenda                |
+  | super-,    | Projetile prefix               |
+  |            |                                |
 
 
 

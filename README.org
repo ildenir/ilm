@@ -58,7 +58,7 @@ escuro.
   | M-<right>  | Scroll janela uma linha para abaixo |
   | C-c l      | Org mode store link                 |
   | C-c a      | Org mode agenda                     |
-
+  | super-,    | Projetile prefix                    |
 
 
 * Helm cheat sheet
