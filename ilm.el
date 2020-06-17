@@ -125,6 +125,7 @@
 (global-set-key (kbd "C-c w w") 'whitespace-mode)
 (global-set-key (kbd "C-c w c") 'whitespace-cleanup)
 (global-set-key (kbd "<f9>") 'other-frame)
+(global-set-key (kbd "<f12>") 'recompile)
 
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
 (global-set-key (kbd "M-x") 'helm-M-x)
@@ -135,6 +136,10 @@
 (global-set-key (kbd "M-<right>") 'scroll-down-line )
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
+
+(define-key c-mode-map (kbd "C-c o") 'ff-find-other-file)
+(define-key c++-mode-map (kbd "C-c o") 'ff-find-other-file)
+
 
 (require 'switch-window)
 (global-set-key (kbd "C-x 1") 'switch-window-then-maximize)
