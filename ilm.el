@@ -137,6 +137,7 @@
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
 
+(require 'cc-mode)
 (define-key c-mode-map (kbd "C-c o") 'ff-find-other-file)
 (define-key c++-mode-map (kbd "C-c o") 'ff-find-other-file)
 
