@@ -100,8 +100,7 @@ os novos dados."
       (insert (make-string (1+ (testcase-view--level node )) ?*))
       (insert (make-string (1+ (testcase-view--level node )) ?\s))
       (insert (format " %s %s \n" testname status)))
-    (dolist (e children)
-      (testcase-view--print-data e))))
+    (mapc #'testcase-view--print-data children)))
 
 (defun testcase-view--build-buffer ()
   "Escreve arvore de casos de teste."
