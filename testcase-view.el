@@ -41,8 +41,8 @@ os novos dados."
 ;;; Commands
 
 (defconst testcase-view--status-prettyprint
-  '((ok . "ok")
-    (fail . "fail")
+  '(('ok . "ok")
+    ('fail . "fail")
     (nil . "none"))
   "Alist tranforma codigo status em prettyprint.")
 
@@ -57,9 +57,9 @@ os novos dados."
 (defvar testcase-view-data
   '("Tests" nil (("Addition" nil (("canAddTwoNumber" nil nil)))
 		 ("BankAccountTest" nil (("canDepositMoney" nil nil)))
-		 ("silver " nil (("add" nil nil)
-				 ("sub" nil nil)
-				 ("block" nil nil))))))
+		 ("silver " 'fail (("add" 'fail nil)
+				 ("sub" 'fail nil)
+				 ("block" 'ok nil))))))
 
 (defun testcase-view--get-test-children (node)
   (nth 2 node))
