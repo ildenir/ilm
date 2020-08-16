@@ -17,6 +17,8 @@
 ;;; Variaveis customizaveis
 
 (require 'outline)
+(require 'tabulated-list)
+(require 'seq)
 
 (defgroup testcase-view nil
   "Testcase view/browser"
@@ -89,26 +91,42 @@ os novos dados."
 	  )))
     level))
 
+(defun testcase-view--num-test (node)
+  "Retorna numero de testes de NODE."
+  (let ((children (testcase-view--get-test-children node)))
+    (if (null children)
+	1
+      (seq-reduce #'+ (mapcar #'testcase-view--num-test children) 0))))
+
 (defun testcase-view--print-data (node)
-  "Percorre NODE e print de acordo com arvore."
+  "Percorre NODE e cria entry em tabela print de acordo com arvore."
   (let* ((children    (testcase-view--get-test-children node))
 	 (testname    (testcase-view--get-testname node))
 	 (test-status (testcase-view--get-teststatus node))
-	 (numtests    (length children))
+	 (numtests    (testcase-view--num-test node))
 	 (status      (cdr (assoc test-status
 				  testcase-view--status-prettyprint))))
     (when node
-      (insert (make-string (1+ (testcase-view--level node )) ?*))
-      (insert (make-string (1+ (testcase-view--level node )) ?\s))
-      (insert (format " %s " testname))
-      (unless (eql numtests 0) (insert (format "%d " numtests)))
-      (insert (format "\t\t%s\n" status)))
-    (mapc #'testcase-view--print-data children)))
+      (setq tabulated-list-entries
+	    (append tabulated-list-entries
+		    `((nil
+		       [;;coluna ** testname
+			,(concat
+			  (make-string (1+ (testcase-view--level node )) ?*)
+			  (make-string (1+ (testcase-view--level node )) ?\s)
+			  (format "%s " testname))
+			;; coluna numero de testes
+			,(if (eql numtests 0) "" (format "%d " numtests))
+			;; coluna status do teste
+			,(format "%s" status)]))))
+      (mapc #'testcase-view--print-data children))))
 
 (defun testcase-view--build-buffer ()
   "Escreve arvore de casos de teste."
   (run-hooks testcase-view-load-from-project)
-  (testcase-view--print-data testcase-view-data))
+  (setq tabulated-list-entries '())
+  (testcase-view--print-data testcase-view-data)
+  (tabulated-list-print))
 
 (defun testcase-view-do-revert ()
   "Atualiza buffer com dados de teste."
@@ -133,7 +151,7 @@ os novos dados."
 ;;; Keybinding
 (defvar testcase-view-mode-map
   (let ((map (make-sparse-keymap)))
-    (set-keymap-parent map special-mode-map)
+    (set-keymap-parent map tabulated-list-mode-map)
     (define-key map [?\t] 'outline-toggle-children)
     (define-key map (kbd "g") 'testcase-view-do-revert)
     (define-key map (kbd "+") 'testcase-view-do-add-test)
@@ -144,16 +162,19 @@ os novos dados."
 
 
 ;;; Mode define
-(define-derived-mode testcase-view-mode special-mode
+(define-derived-mode testcase-view-mode tabulated-list-mode
   "testcase-view"
-  (use-local-map testcase-view-mode-map))
+  (use-local-map testcase-view-mode-map)
+  (setq tabulated-list-format [("Test Case" 40 nil)
+			       ("#Testes" 7 nil)
+			       ("Status" 7 nil)])
+  (tabulated-list-init-header))
 
 (defun testcase-view ()
   "Exibe buffer com estes do diretorio corrente."
   (interactive)
   (let ((buf (get-buffer-create testcase-view-buffer)))
     (switch-to-buffer buf)
-
     (testcase-view-do-revert)
     (testcase-view-mode)
     (read-only-mode)
