@@ -171,7 +171,8 @@ os novos dados."
   (setq tabulated-list-format [("Test Case" 40 nil)
 			       ("#Testes" 7 nil)
 			       ("Status" 7 nil)])
-  (tabulated-list-init-header))
+  (tabulated-list-init-header)
+  (tabulated-list-print))
 
 (defun testcase-view ()
   "Exibe buffer com estes do diretorio corrente."
