@@ -64,12 +64,15 @@ os novos dados."
 				   ("block" 'ok nil))))))
 
 (defun testcase-view--get-test-children (node)
+  "Acessa filho de NODE."
   (nth 2 node))
 
 (defun testcase-view--get-testname (node)
-  (nth 0 node))
+  "Acessa testname de NODE."
+(nth 0 node))
 
 (defun testcase-view--get-teststatus (node)
+  "Acessa status de NODE."
   (nth 1 node))
 
 (defun testcase-view--level (node)
@@ -123,7 +126,7 @@ os novos dados."
 
 (defun testcase-view--build-buffer ()
   "Escreve arvore de casos de teste."
-  (run-hooks testcase-view-load-from-project)
+;;  (run-hooks testcase-view-load-from-project)
   (setq tabulated-list-entries '())
   (testcase-view--print-data testcase-view-data)
   (tabulated-list-print))
@@ -134,7 +137,7 @@ os novos dados."
   (let ((buf (get-buffer-create testcase-view-buffer))
 	(inhibit-read-only t))
     (with-current-buffer buf
-      (erase-buffer)
+;;      (erase-buffer)
       (save-excursion
 	(testcase-view--build-buffer)))))
 
