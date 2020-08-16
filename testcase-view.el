@@ -41,9 +41,9 @@ os novos dados."
 ;;; Commands
 
 (defconst testcase-view--status-prettyprint
-  '(('ok . "ok")
-    ('fail . "fail")
-    (nil . "none"))
+  '(('ok    . "✅")
+    ('fail  . "❎")
+    (nil    . "-"))
   "Alist tranforma codigo status em prettyprint.")
 
 (defvar testcase-view-buffer "*TestCaseView*"
@@ -58,8 +58,8 @@ os novos dados."
   '("Tests" nil (("Addition" nil (("canAddTwoNumber" nil nil)))
 		 ("BankAccountTest" nil (("canDepositMoney" nil nil)))
 		 ("silver " 'fail (("add" 'fail nil)
-				 ("sub" 'fail nil)
-				 ("block" 'ok nil))))))
+				   ("sub" 'fail nil)
+				   ("block" 'ok nil))))))
 
 (defun testcase-view--get-test-children (node)
   (nth 2 node))
@@ -94,12 +94,15 @@ os novos dados."
   (let* ((children    (testcase-view--get-test-children node))
 	 (testname    (testcase-view--get-testname node))
 	 (test-status (testcase-view--get-teststatus node))
+	 (numtests    (length children))
 	 (status      (cdr (assoc test-status
 				  testcase-view--status-prettyprint))))
     (when node
       (insert (make-string (1+ (testcase-view--level node )) ?*))
       (insert (make-string (1+ (testcase-view--level node )) ?\s))
-      (insert (format " %s %s \n" testname status)))
+      (insert (format " %s " testname))
+      (unless (eql numtests 0) (insert (format "%d " numtests)))
+      (insert (format "\t\t%s\n" status)))
     (mapc #'testcase-view--print-data children)))
 
 (defun testcase-view--build-buffer ()
@@ -116,6 +119,15 @@ os novos dados."
       (erase-buffer)
       (save-excursion
 	(testcase-view--build-buffer)))))
+
+
+;;; Font lock
+
+(defvar testcase-view-font-lock-defaults
+  '(("\\(\\*+\\)\s+\\(\\w+\\)\s+\\(.+\\)"
+     (1 '((t (:inherit font-lock-keyword-face ))))
+     (2 'font-lock-keyword-face)
+     (3 'font-lock-string-face))))
 
 
 ;;; Keybinding
@@ -139,13 +151,15 @@ os novos dados."
 (defun testcase-view ()
   "Exibe buffer com estes do diretorio corrente."
   (interactive)
-  (let ((buf (get-buffer-create testcase-view-buffer))
-	)
+  (let ((buf (get-buffer-create testcase-view-buffer)))
     (switch-to-buffer buf)
-    (testcase-view-mode)
+
     (testcase-view-do-revert)
+    (testcase-view-mode)
     (read-only-mode)
-    (outline-minor-mode)))
+    (outline-minor-mode)
+    (setq font-lock-defaults '(testcase-view-font-lock-defaults))
+    (font-lock-mode t)))
 
 (provide 'testcase-view)
 
