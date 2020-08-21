@@ -153,6 +153,8 @@
 (global-set-key (kbd "C-x 3") 'switch-window-then-split-right)
 (global-set-key (kbd "C-x 0") 'switch-window-then-delete)
 
+(define-key emacs-lisp-mode-map (kbd "<f5>") 'eval-buffer)
+
 (provide 'ilm)
 
 ;;; ilm.el ends here
