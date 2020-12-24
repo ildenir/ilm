@@ -29,6 +29,9 @@
 (custom-set-faces
  '(cursor ((t (:background "dark orange")))))
 
+(require 'fringe)
+(set-fringe-style '(nil . 0))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; Package install  ;;
