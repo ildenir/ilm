@@ -47,7 +47,7 @@
 
 
 (defun ilm-install-packages(&rest packs)
-  "Instala pacotes se necessario"
+  "Instala pacotes se necessario."
   (dolist (pack packs)
     (message (format "Processando %s" (symbol-name pack)))
     (unless (package-installed-p pack)
