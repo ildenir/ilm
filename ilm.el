@@ -69,8 +69,7 @@
 (require 'powerline)
 (powerline-default-theme)
 
-
-(defun ilm-loc ()
+(defun ilm--loc ()
   "Numero de linhas do buffer."
   (count-lines (point-min) (point-max)))
 
@@ -78,41 +77,44 @@
   "Mode line simplificada para modos comuns como cc-mode.
 Usa powerline para outros modos."
   (interactive)
-  (setq mode-line-format
-	'("%e"
-	  (:eval
-	   (let* ((active (powerline-selected-window-active))
-		  (mode-line-buffer-id (if active 'mode-line-buffer-id 'mode-line-buffer-id-inactive))
-		  (mode-line (if active 'mode-line 'mode-line-inactive))
-		  (face0 (if active 'powerline-active0 'powerline-inactive0))
-		  (face1 (if active 'powerline-active1 'powerline-inactive1))
-		  (face2 (if active 'powerline-active2 'powerline-inactive2))
-		  (separator-left (intern (format "powerline-%s-%s"
-						  (powerline-current-separator)
-						  (car powerline-default-separator-dir))))
-		  (separator-right (intern (format "powerline-%s-%s"
-						   (powerline-current-separator)
-						   (cdr powerline-default-separator-dir))))
-		  (lhs (list
-			(when (buffer-modified-p) (powerline-raw "%*" face0 'l))
-			(if (buffer-file-name) (powerline-raw "%f" face0 'l)
-			  "%b")
-			(powerline-raw " " face0)
-			(funcall separator-left face0 face1)
-			(powerline-raw "%l" face1 'l)
-			(powerline-raw ":" face1 'l)
-			(powerline-raw "%c" face1 'l)
+  (setq-default mode-line-format
+		'("%e"
+		  (:eval
+		   (let* ((active (powerline-selected-window-active))
+			  (mode-line-buffer-id (if active 'mode-line-buffer-id 'mode-line-buffer-id-inactive))
+			  (mode-line (if active 'mode-line 'mode-line-inactive))
+			  (face0 (if active 'powerline-active0 'powerline-inactive0))
+			  (face1 (if active 'powerline-active1 'powerline-inactive1))
+			  (face2 (if active 'powerline-active2 'powerline-inactive2))
+			  (separator-left (intern (format "powerline-%s-%s"
+							  (powerline-current-separator)
+							  (car powerline-default-separator-dir))))
+			  (separator-right (intern (format "powerline-%s-%s"
+							   (powerline-current-separator)
+							   (cdr powerline-default-separator-dir))))
+			  (line (list
+				 (when (buffer-modified-p) (powerline-raw "%* " face0 'l))
+				 (cond
+				  ((not (null (buffer-file-name)))
+				   (powerline-raw "%f" face0 'l))
+				  (t "%b"))
+				 (powerline-raw " " face0)
+				 (funcall separator-left face0 face1)
+				 (powerline-raw "%l" face1 'l)
+				 (powerline-raw ":" face1 'l)
+				 (powerline-raw "%c" face1 'l)
 
-			(funcall separator-left face1 face2)
-			(powerline-raw "#" face2 'l)
-			(powerline-raw (number-to-string (ilm-loc)) face2 'l)
-			(funcall separator-left face2 face0))))
-	     (concat (powerline-render lhs)))))))
+				 (funcall separator-left face1 face2)
+				 (powerline-raw "LOC" face2 'l)
+				 (powerline-raw (number-to-string (ilm--loc)) face2 'l)
+				 (funcall separator-left face2 face0))))
+		     (powerline-render line))))))
 
 (add-hook 'c-mode-hook #'ilm-mode-line)
 (add-hook 'c++-mode-hook #'ilm-mode-line)
 (add-hook 'lisp-mode-hook #'ilm-mode-line)
 (add-hook 'lisp-interaction-mode-hook #'ilm-mode-line)
+(add-hook 'emacs-lisp-mode-hook #'ilm-mode-line)
 
 ;; Projectile
 (require 'projectile)
