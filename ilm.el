@@ -1,4 +1,4 @@
-;;; ilm.el --- Configuracoes pessoais
+;;; ilm.el --- Configuracoes pessoais  -*- lexical-binding:t -*-
 
 ;;; Commentary:
 ;;
