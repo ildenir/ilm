@@ -119,8 +119,6 @@ Usa powerline para outros modos."
 						   (file-name-as-directory
 						    (file-name-nondirectory (directory-file-name projroot)))
 						   (file-relative-name (buffer-file-name) projroot))))
-				  ((not (null (buffer-file-name)))
-				   (powerline-raw "%f" face0 'l))
 				  (t (powerline-raw "%b" face0 'l)))
 				 (powerline-raw " " face0)
 				 (funcall separator-left face0 face1)
