@@ -67,10 +67,28 @@
 
 ;; Powerline
 (require 'powerline)
+(require 'seq)
 
 (defun ilm--loc ()
   "Numero de linhas do buffer."
   (count-lines (point-min) (point-max)))
+
+(defun ilm--proj-p (dir)
+  "Verifica se DIR possui caracteristicas de projeto."
+  (let* ((files '("Makefile" ".git" "makefile" ".svn"))
+	 (pf (mapcar #'(lambda (el) (expand-file-name el dir )) files)))
+    (seq-some #'file-exists-p pf)))
+
+(defun ilm--project-root (dir)
+  "Raiz do projeto de DIR ou nil."
+  (let ((nextdir dir)
+	(home (getenv "HOME"))
+	(out nil))
+    (while (and (not (null dir))
+		(not (string= nextdir (file-name-as-directory home))))
+      (when (ilm--proj-p nextdir) (setq out nextdir))
+      (setq nextdir (file-name-directory (directory-file-name nextdir))))
+    out))
 
 (defun ilm-mode-line ()
   "Mode line simplificada para modos comuns como cc-mode.
@@ -91,13 +109,19 @@ Usa powerline para outros modos."
 			  (separator-right (intern (format "powerline-%s-%s"
 							   (powerline-current-separator)
 							   (cdr powerline-default-separator-dir))))
+			  (projroot (ilm--project-root (buffer-file-name)))
 			  (line (list
 				 (powerline-raw " " face0)
 				 (when (buffer-modified-p) (powerline-raw "%* " face0 'l))
 				 (cond
+				  ((not (null projroot))
+				   (powerline-raw (concat
+						   (file-name-as-directory
+						    (file-name-nondirectory (directory-file-name projroot)))
+						   (file-relative-name (buffer-file-name) projroot))))
 				  ((not (null (buffer-file-name)))
 				   (powerline-raw "%f" face0 'l))
-				  (t "%b"))
+				  (t (powerline-raw "%b" face0 'l)))
 				 (powerline-raw " " face0)
 				 (funcall separator-left face0 face1)
 				 (powerline-raw "%m" face1 'l)
