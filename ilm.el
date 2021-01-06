@@ -58,7 +58,8 @@
 
 (ilm-install-packages 'projectile 'helm 'helm-projectile 'powerline 'yasnippet
 		      'magit 'markdown-mode 'switch-window 'paredit
-		      'htmlize 'flycheck 'org-bullets 'column-enforce-mode)
+		      'htmlize 'flycheck 'org-bullets 'column-enforce-mode
+		      'all-the-icons)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;
@@ -111,11 +112,13 @@ Usa powerline para outros modos."
 							   (cdr powerline-default-separator-dir))))
 			  (projroot (ilm--project-root (buffer-file-name)))
 			  (line (list
-				 (powerline-raw " " face0)
+				 (powerline-raw "    " face0)
 				 (when (buffer-modified-p) (powerline-raw "%* " face0 'l))
 				 (cond
 				  ((not (null projroot))
 				   (powerline-raw (concat
+						   (all-the-icons-icon-for-file (buffer-file-name))
+						   " "
 						   (file-name-as-directory
 						    (file-name-nondirectory (directory-file-name projroot)))
 						   (file-relative-name (buffer-file-name) projroot))))
