@@ -25,7 +25,9 @@
 (windmove-default-keybindings)
 (fset 'yes-or-no-p 'y-or-n-p)
 (custom-set-variables
+ '(powerline-default-separator (quote wave))
  '(blink-cursor-mode nil))
+
 (custom-set-faces
  '(cursor ((t (:background "dark orange")))))
 
@@ -117,7 +119,7 @@ Usa powerline para outros modos."
 				 (cond
 				  ((not (null projroot))
 				   (powerline-raw (concat
-						   (all-the-icons-icon-for-file (buffer-file-name))
+						   (all-the-icons-icon-for-file (buffer-file-name) :v-adjust 0)
 						   " "
 						   (file-name-as-directory
 						    (file-name-nondirectory (directory-file-name projroot)))
@@ -135,6 +137,7 @@ Usa powerline para outros modos."
 				 (funcall separator-left face2 face0))))
 		     (powerline-render line))))))
 (ilm-mode-line)
+(set-face-attribute 'mode-line nil :box '(:line-width 4 :color "#444444"))
 
 ;; Projectile
 (require 'projectile)
