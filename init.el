@@ -1,6 +1,6 @@
 ;;; init.el --- distribuicao pessoal emacs -*- lexical-binding:t -*-
 
-;; Copyright (C) 2017 Ildenir Barbosa
+;; Copyright (C) 2017, 2021 Ildenir Barbosa
 
 ;; Author: Ildenir Barbosa <il.denir@gmail.com>
 ;; Created: Sat Jul 29 21:52:29 2017
