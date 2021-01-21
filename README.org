@@ -58,7 +58,7 @@ escuro.
   | M-<right>  | Scroll janela uma linha para abaixo |
   | C-c l      | Org mode store link                 |
   | C-c a      | Org mode agenda                     |
-  | super-,    | Projetile prefix                    |
+
 
 
 * Helm cheat sheet
@@ -72,8 +72,6 @@ Utilize o prefixo =C-c h= antes do comandos seguinte
 | a          | apropos          |
 
 * Configuracoes
-- Regera automaticamente arquivos de TAGS do projeto *projectile*
-ao salvar algum arquivo.
 - Habilita limpeza automatica de espacos em branco ao salvar arquivo.
 
 *  Distros mais completas

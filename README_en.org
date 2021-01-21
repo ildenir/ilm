@@ -57,10 +57,6 @@ with dark theme.
   | M-<right>  | Scroll window one line down    |
   | C-c l      | Org mode store link            |
   | C-c a      | Org mode agenda                |
-  | super-,    | Projetile prefix               |
-  |            |                                |
-
-
 
 * Helm cheat sheet
 
@@ -74,7 +70,6 @@ Use the prefix  =C-c h= before the following commands
 | a          | apropos          |
 
 * Configuracoes
-- Automatically regenerate TAGS file of the Project when a file is saved.
 - Enable automatic whitespace cleanup when file is saved.
 
 *  Distros mais completas

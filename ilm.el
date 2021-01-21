@@ -82,7 +82,7 @@
 	  (package-install pack t)
 	(error (message "error handling") (package-refresh-contents) (package-install pack))))))
 
-(ilm-install-packages 'projectile 'helm 'helm-projectile 'powerline 'yasnippet
+(ilm-install-packages 'helm 'powerline 'yasnippet
 		      'magit 'markdown-mode 'switch-window 'paredit
 		      'htmlize 'flycheck 'org-bullets 'column-enforce-mode
 		      'all-the-icons)
@@ -144,22 +144,11 @@ Usa powerline para outros modos."
 (set-face-attribute 'mode-line-inactive nil
 		    :box '(:line-width 4 :color "#444444"))
 
-;; Projectile
-(require 'projectile)
-(projectile-mode)
-(add-hook 'before-save-hook #'projectile-regenerate-tags)
-(setq tags-revert-without-query t)
-(define-key projectile-mode-map (kbd "s-,") 'projectile-command-map)
-
 ;; Helm
 ;; Referencia: tuhdo.github.io/helm-intro.html
 (require 'helm)
 (require 'helm-config)
 (helm-mode 1)
-
-;; Projectile Helm integration
-(require 'helm-projectile)
-(helm-projectile-on)
 
 ;; Yasnippet
 (require 'yasnippet)
