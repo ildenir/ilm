@@ -37,7 +37,7 @@
 
 (defun ilm--proj-p (dir)
   "Verifica se DIR possui caracteristicas de projeto."
-  (let* ((files '("Makefile" ".git" "makefile" ".svn"))
+  (let* ((files '("Makefile" ".git" "makefile" ".svn" "node_modules"))
 	 (pf (mapcar #'(lambda (el) (expand-file-name el dir )) files)))
     (seq-some #'file-exists-p pf)))
 
