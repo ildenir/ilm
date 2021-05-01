@@ -85,7 +85,7 @@
 (ilm-install-packages 'helm 'powerline 'yasnippet
 		      'magit 'markdown-mode 'switch-window 'paredit
 		      'htmlize 'flycheck 'org-bullets 'column-enforce-mode
-		      'all-the-icons)
+		      'all-the-icons 'neotree)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;
@@ -144,6 +144,9 @@ Usa powerline para outros modos."
 (set-face-attribute 'mode-line-inactive nil
 		    :box '(:line-width 4 :color "#444444"))
 
+;; Neotree
+(require 'neotree)
+
 ;; Helm
 ;; Referencia: tuhdo.github.io/helm-intro.html
 (require 'helm)
@@ -195,6 +198,7 @@ Usa powerline para outros modos."
 (global-set-key (kbd "C-c w w") 'whitespace-mode)
 (global-set-key (kbd "C-c w c") 'whitespace-cleanup)
 (global-set-key (kbd "<f9>") 'other-frame)
+(global-set-key (kbd "<f8>") 'neotree-toggle)
 (global-set-key (kbd "<f12>") 'recompile)
 
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
