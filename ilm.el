@@ -190,6 +190,19 @@ Usa powerline para outros modos."
 (add-hook 'c-mode-hook #'column-enforce-mode)
 (add-hook 'prog-mode-hook #'column-enforce-mode)
 
+;; ilm-front-screen
+(require 'ilm-front-screen)
+;(require 'all-the-icons)
+
+(defun ilm--on-recentf-update ()
+  "Atualiza tela inicial."
+  (ilm-front-screen-show)
+  (ilm-front-screen-switch-buffer))
+
+(add-hook 'find-file-hook 'ilm-front-screen-show)
+(add-hook 'recentf-mode-hook 'ilm--on-recentf-update)
+(recentf-mode t)
+
 
 ;;;;;;;;;;;;;;;;;;
 ;; Keybindings  ;;

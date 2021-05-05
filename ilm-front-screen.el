@@ -32,11 +32,11 @@
 
 (require 'ilm-misc)
 (require 'recentf)
+(require 'all-the-icons)
 
 (defun ilm-front-screen--recent-projects ()
   "Retorna lista diretorios de projetos recentes.
 Entende-se projeto como qualquer diretorio com diretorio .git."
-
   (remove nil (seq-uniq
 	       (seq-map #'(lambda (el) (ilm--project-root el))
 			recentf-list))))
@@ -52,10 +52,13 @@ Entende-se projeto como qualquer diretorio com diretorio .git."
 	    (file-name-nondirectory (directory-file-name proj-root)))
 	   (file-relative-name filename proj-root))))
 
+(defvar ilm-front-screen-buffer-name "*ilm-front-screen*"
+  "Nome do buffer usado para tela inicial.")
+
 (defun ilm-front-screen-show ()
   "Printa tela inicial."
   (interactive)
-  (let* ((buf (get-buffer-create "*ilm-front-screen*"))
+  (let* ((buf (get-buffer-create ilm-front-screen-buffer-name))
 	 (halfWidth (/ (window-width) 2))
 	 (col (/ (window-width) 12))
 	 (col2 (* 2 col))
@@ -88,12 +91,15 @@ Entende-se projeto como qualquer diretorio com diretorio .git."
 				  (if proj-root
 				      (ilm--proj-relative filename)
 				    filename)))))
-	    (seq-subseq recentf-list 0 20)))))
-
-
-(ilm-front-screen-show)
-
-
+	    (recentf-elements 20)))))
+;(seq-subseq recentf-list 0)
+(defun ilm-front-screen-switch-buffer ()
+  "Altera buffer para tela inicial."
+  (let ((buf (get-buffer ilm-front-screen-buffer-name)))
+    (when buf
+      (with-current-buffer buf
+	(read-only-mode))
+      (switch-to-buffer buf))))
 
 (provide 'ilm-front-screen)
 
