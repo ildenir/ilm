@@ -58,7 +58,8 @@ Entende-se projeto como qualquer diretorio com diretorio .git."
 (defun ilm-front-screen-show ()
   "Printa tela inicial."
   (interactive)
-  (let* ((buf (get-buffer-create ilm-front-screen-buffer-name))
+  (let* ((inhibit-read-only t)
+	 (buf (get-buffer-create ilm-front-screen-buffer-name))
 	 (halfWidth (/ (window-width) 2))
 	 (col (/ (window-width) 12))
 	 (col2 (* 2 col))
