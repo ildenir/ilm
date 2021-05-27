@@ -85,7 +85,7 @@
 (ilm-install-packages 'helm 'powerline 'yasnippet
 		      'magit 'markdown-mode 'switch-window 'paredit
 		      'htmlize 'flycheck 'org-bullets 'column-enforce-mode
-		      'all-the-icons 'neotree)
+		      'all-the-icons 'neotree 'vue-mode)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;
