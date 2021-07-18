@@ -100,7 +100,8 @@ Entende-se projeto como qualquer diretorio com diretorio .git."
     (when buf
       (with-current-buffer buf
 	(read-only-mode))
-      (switch-to-buffer buf))))
+      (switch-to-buffer buf)
+      (goto-char (point-min)))))
 
 (provide 'ilm-front-screen)
 
