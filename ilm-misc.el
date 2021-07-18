@@ -30,6 +30,7 @@
 ;;; Code:
 ;;
 (require 'seq)
+(require 'memoize)
 
 (defun ilm--loc ()
   "Numero de linhas do buffer."
@@ -52,6 +53,9 @@
       (when (ilm--proj-p nextdir) (setq out nextdir))
       (setq nextdir (file-name-directory (directory-file-name nextdir))))
     out))
+
+(memoize 'ilm--project-root)
+
 
 
 
