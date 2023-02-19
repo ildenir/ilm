@@ -2,8 +2,8 @@
 #+AUTHOR: Ildenir Barbosa
 #+STARTUP: showeverything
 
-This is my personal configuration for emacs. It is a minimal distro
-with dark theme.
+The ILM project is a repository on GitHub that contains my personal Emacs configurations. The goal is to provide a set of customizations that can be used to enhance the user's productivity and efficiency in Emacs. These configurations include custom keyboard shortcuts, additional packages, custom themes, and other customization options that make Emacs more suitable for the user's specific needs. The project can be useful for those who want to make the most out of Emacs and turn it into a more effective tool for their daily routine.
+
 
 #+CAPTION: ilm screenshot
 [[screenshot.png]]
