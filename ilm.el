@@ -116,7 +116,13 @@ Usa powerline para outros modos."
 							   (powerline-current-separator)
 							   (cdr powerline-default-separator-dir))))
 			  (projroot (ilm--project-root (buffer-file-name)))
-			  (line (list
+			  (center (list (powerline-raw "%m" face0 'l)))
+			  (rhs (list (powerline-raw "(%l" face0 'l)
+				 (powerline-raw ":" face0 'l)
+				 (powerline-raw "%c)" face0 'l)
+				 (powerline-raw (concat "#" (number-to-string (ilm--loc)) " ")
+						face0 'l)))
+			  (lhs (list
 				 (powerline-raw "    " face0)
 				 (when (buffer-modified-p) (powerline-raw "%* " face0 'l))
 				 (cond
@@ -129,16 +135,16 @@ Usa powerline para outros modos."
 						   (file-relative-name (buffer-file-name) projroot))))
 				  (t (powerline-raw "%b" face0 'l)))
 				 (powerline-raw " " face0)
-				 (funcall separator-left face0 face1)
-				 (powerline-raw "%m" face1 'l)
-				 (funcall separator-left face1 face2)
-				 (powerline-raw "%l" face2 'l)
-				 (powerline-raw ":" face2 'l)
-				 (powerline-raw "%c" face2 'l)
-				 (powerline-raw "LOC" face2 'l)
-				 (powerline-raw (number-to-string (ilm--loc)) face2 'l)
-				 (funcall separator-left face2 face0))))
-		     (powerline-render line))))))
+				 (when active
+				   (powerline-raw (concat
+						   (ilm-pomodoro/icon)
+						   (ilm-pomodoro/elapse-time)))
+				   ))))
+		     (concat  (powerline-render lhs)
+			      (powerline-fill-center face0 (/ (powerline-width center) 2.0))
+			      (powerline-render center)
+			      (powerline-fill face0 (powerline-width rhs))
+			      (powerline-render rhs)))))))
 (ilm-mode-line)
 (set-face-attribute 'mode-line nil :box '(:line-width 4 :color "#444444"))
 (set-face-attribute 'mode-line-inactive nil
