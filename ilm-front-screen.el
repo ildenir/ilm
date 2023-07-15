@@ -63,7 +63,7 @@ Entende-se projeto como qualquer diretorio com diretorio .git."
 	 (halfWidth (/ (window-width) 2))
 	 (col (/ (window-width) 12))
 	 (col2 (* 2 col))
-	 (title " ILM -- Perfil Pessoal")
+	 (title " ILM -- dot EMACS")
 	 (title-pad (- halfWidth (/ (length title) 2))))
     (with-current-buffer buf
       (org-mode)
