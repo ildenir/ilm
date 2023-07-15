@@ -34,6 +34,10 @@
 ;; Config Emacs ;;
 ;;;;;;;;;;;;;;;;;;
 
+(defgroup ilm nil
+  "ilm configs."
+  :group 'misc)
+
 (setq inhibit-startup-message t)
 
 ;; disable backup
@@ -57,6 +61,8 @@
 
 (require 'fringe)
 (set-fringe-style '(nil . 0))
+
+(require 'ilm-pomodoro)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;
@@ -245,8 +251,11 @@ Usa powerline para outros modos."
 (global-set-key (kbd "C-x 2") 'switch-window-then-split-below)
 (global-set-key (kbd "C-x 3") 'switch-window-then-split-right)
 (global-set-key (kbd "C-x 0") 'switch-window-then-delete)
-
 (define-key emacs-lisp-mode-map (kbd "<f5>") 'eval-buffer)
+(define-key lisp-mode-map (kbd "<f5>") 'slime-eval-buffer)
+
+
+(global-set-key (kbd "<pause>") 'ilm-pomodoro-set-timer)
 
 (provide 'ilm)
 
