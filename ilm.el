@@ -88,7 +88,7 @@
 	  (package-install pack t)
 	(error (message "error handling") (package-refresh-contents) (package-install pack))))))
 
-(ilm-install-packages 'helm 'powerline 'yasnippet
+(ilm-install-packages 'ivy 'powerline 'yasnippet
 		      'magit 'markdown-mode 'switch-window 'paredit
 		      'htmlize 'flycheck 'org-bullets 'column-enforce-mode
 		      'all-the-icons 'neotree 'vue-mode)
@@ -159,11 +159,10 @@ Usa powerline para outros modos."
 ;; Neotree
 (require 'neotree)
 
-;; Helm
-;; Referencia: tuhdo.github.io/helm-intro.html
-(require 'helm)
-(require 'helm-config)
-(helm-mode 1)
+;; Ivy
+(ivy-mode)
+(setq ivy-use-virtual-buffers t)
+(setq enable-recursive-minibuffers t)
 
 ;; Yasnippet
 (require 'yasnippet)
@@ -226,11 +225,6 @@ Usa powerline para outros modos."
 (global-set-key (kbd "<f8>") 'neotree-toggle)
 (global-set-key (kbd "<f12>") 'recompile)
 
-(global-set-key (kbd "C-c h") 'helm-command-prefix)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "C-x C-b") 'helm-mini)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "M-<left>") 'scroll-up-line )
 (global-set-key (kbd "M-<right>") 'scroll-down-line )
 (global-set-key (kbd "C-c l") 'org-store-link)
