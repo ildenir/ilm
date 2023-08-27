@@ -57,17 +57,6 @@ escuro.
   | C-c a      | Org mode agenda                     |
 
 
-
-* Helm cheat sheet
-
-Utilize o prefixo =C-c h= antes do comandos seguinte
-| Keybinding | Descricao        |
-|------------+------------------|
-| i          | semantic e imenu |
-| m          | woman            |
-| */*        | find             |
-| a          | apropos          |
-
 * Configuracoes
 - Habilita limpeza automatica de espacos em branco ao salvar arquivo.
 

@@ -54,17 +54,6 @@ The ILM project is a repository on GitHub that contains my personal Emacs config
   | C-c l      | Org mode store link            |
   | C-c a      | Org mode agenda                |
 
-* Helm cheat sheet
-
-Use the prefix  =C-c h= before the following commands
-
-| Keybinding | Description      |
-|------------+------------------|
-| i          | semantic e imenu |
-| m          | woman            |
-| */*        | find             |
-| a          | apropos          |
-
 * Configuracoes
 - Enable automatic whitespace cleanup when file is saved.
 
