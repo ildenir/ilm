@@ -5,9 +5,6 @@
 Minhas configuracoes pessoais do emacs. Distribuicao minima com tema
 escuro.
 
-#+CAPTION: ilm screenshot
-[[screenshot.png]]
-
 * Uso
 
   Baixe o repositorio no diretorio ilm
