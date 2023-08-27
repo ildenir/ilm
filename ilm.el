@@ -72,8 +72,7 @@
 
 (package-initialize)
 (let ((repos '(("melpa" . "http://melpa.org/packages/")
-	      ("org" . "http://orgmode.org/elpa/")
-	      ("marmalade" . "http://marmalade-repo.org/packages/"))))
+	      ("org" . "http://orgmode.org/elpa/"))))
   (dolist (repo repos)
     (add-to-list 'package-archives repo)))
 
