@@ -1,6 +1,6 @@
 ;;; ilm.el --- Configuracoes pessoais  -*- lexical-binding:t -*-
 
-;; Copyright (C) 2017, 2021 Ildenir Barbosa
+;; Copyright (C) 2017, 2023 Ildenir Barbosa
 
 ;; Author: Ildenir Barbosa <il.denir@gmail.com>
 ;; Created: Sat Jul 29 21:52:29 2017
