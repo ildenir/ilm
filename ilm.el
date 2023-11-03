@@ -90,7 +90,7 @@
 (ilm-install-packages 'ivy 'powerline 'yasnippet
 		      'magit 'markdown-mode 'switch-window 'paredit
 		      'htmlize 'flycheck 'org-bullets 'column-enforce-mode
-		      'all-the-icons 'neotree 'vue-mode)
+		      'all-the-icons 'neotree 'vue-mode 'eglot 'company)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;
@@ -199,6 +199,13 @@ Usa powerline para outros modos."
 (add-hook 'lisp-interaction-mode-hook #'column-enforce-mode)
 (add-hook 'c-mode-hook #'column-enforce-mode)
 (add-hook 'prog-mode-hook #'column-enforce-mode)
+
+;; company
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
+
+;; eglot
+(add-hook 'c-mode-hook #'eglot-ensure)
 
 ;; ilm-front-screen
 (require 'ilm-front-screen)
