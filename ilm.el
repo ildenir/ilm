@@ -178,7 +178,6 @@
 
 ;; ilm-front-screen
 (require 'ilm-front-screen)
-;(require 'all-the-icons)
 
 ;; All-the-icons
 (use-package all-the-icons
