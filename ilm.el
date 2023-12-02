@@ -104,15 +104,13 @@
 ;; Powerline
 
 (use-package powerline
-	     :init
-	     (require 'ilm-powerline)
-	     (require 'ilm-misc)
-	     (ilm-mode-line)
-	     (set-face-attribute 'mode-line nil :box '(:line-width 4 :color "#444444"))
-	     (set-face-attribute 'mode-line-inactive nil
-		    :box '(:line-width 4 :color "#444444"))
-
-	     )
+  :init
+  (require 'ilm-powerline)
+  (require 'ilm-misc)
+  (ilm-mode-line)
+  (set-face-attribute 'mode-line nil :box '(:line-width 4 :color "#444444"))
+  (set-face-attribute 'mode-line-inactive nil
+		      :box '(:line-width 4 :color "#444444")))
 
 ;; Neotree
 (use-package neotree
