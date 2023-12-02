@@ -62,4 +62,6 @@ The ILM project is a repository on GitHub that contains my personal Emacs config
  - [[https://github.com/syl20bnr/spacemacs][Spacemacs]]  : vim based ux distro
 
 * Referencia
-- [[http:tuhdo.github.io/helm-intro.html][A Package in a league of its own]]
+ - [[http:tuhdo.github.io/helm-intro.html][A Package in a league of its own]]
+ - [[https://gitlab.com/dwt1/configuring-emacs][Dwt - Config emacs]]
+ - [[https://github.com/tuhdo/emacs-c-ide-demo][emacs-c-ide]]

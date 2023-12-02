@@ -65,4 +65,6 @@ escuro.
  - [[https://github.com/syl20bnr/spacemacs][Spacemacs]]  : distribuicao ux baseada no vim
 
 * Referencia
-- [[http:tuhdo.github.io/helm-intro.html][A Package in a league of its own]]
+ - [[http:tuhdo.github.io/helm-intro.html][A Package in a league of its own]]
+ - [[https://gitlab.com/dwt1/configuring-emacs][Dwt - Config emacs]]
+ - [[https://github.com/tuhdo/emacs-c-ide-demo][emacs-c-ide]]
