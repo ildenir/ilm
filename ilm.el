@@ -35,7 +35,7 @@
 ;;;;;;;;;;;;;;;;;;
 
 (defgroup ilm nil
-  "ilm configs."
+  "ILM configs."
   :group 'misc)
 
 (setq inhibit-startup-message t)

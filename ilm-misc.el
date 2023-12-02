@@ -1,5 +1,5 @@
-;;; ilm-misc.el --- Rotinas comuns
-;; Copyright (C) 2017, 2021 Ildenir Barbosa
+;;; ilm-misc.el --- Rotinas comuns   -*- lexical-binding:t -*-
+;; Copyright (C) 2017, 2023 Ildenir Barbosa
 
 ;; Author: Ildenir Barbosa <il.denir@gmail.com>
 ;; Created: dom 17 jan 2021 10:47:42 -03
