@@ -210,7 +210,7 @@ Usa powerline para outros modos."
 
 ;; ilm-front-screen
 (require 'ilm-front-screen)
-;(require 'all-the-icons)
+(require 'all-the-icons)
 
 (defun ilm--on-recentf-update ()
   "Atualiza tela inicial."
@@ -220,6 +220,12 @@ Usa powerline para outros modos."
 (add-hook 'find-file-hook 'ilm-front-screen-show)
 (add-hook 'recentf-mode-hook 'ilm--on-recentf-update)
 (recentf-mode t)
+
+;; projectile
+(setq projectile-project-search-path '("~/Projects/"
+				       "~/Projetos/"
+				       "~/ilm/"))
+(add-hook 'find-file-hook 'projectile-discover-projects-in-directory)
 
 
 ;;;;;;;;;;;;;;;;;;

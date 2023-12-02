@@ -102,10 +102,10 @@ Entende-se projeto como qualquer diretorio com diretorio .git."
   (let ((buf (get-buffer ilm-front-screen-buffer-name)))
     (dashboard-setup-startup-hook)
     (setq dashboard-banner-logo-title "ILM -- dot Emacs")
-    ;(setq dashboard-icon-type 'all-the-icons)
     (setq dashboard-display-icons-p t)
+    (setq dashboard-icon-type 'all-the-icons)
     (setq dashboard-startup-banner nil)
-    (setq dashboard-set-heading-icons t)
+    ;(setq dashboard-set-heading-icons t)
     (setq dashboard-set-file-icons t)
     (setq dashboard-items '((projects . 5) (recents  . 5)))))
 
