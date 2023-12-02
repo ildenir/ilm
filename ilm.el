@@ -35,7 +35,7 @@
 ;;;;;;;;;;;;;;;;;;
 
 (defgroup ilm nil
-  "ilm configs."
+  "ILM configs."
   :group 'misc)
 
 (setq inhibit-startup-message t)
@@ -90,7 +90,8 @@
 (ilm-install-packages 'ivy 'powerline 'yasnippet
 		      'magit 'markdown-mode 'switch-window 'paredit
 		      'htmlize 'flycheck 'org-bullets 'column-enforce-mode
-		      'all-the-icons 'neotree 'vue-mode 'eglot 'company)
+		      'all-the-icons 'neotree 'vue-mode 'eglot 'company
+		      'projectile 'dashboard 'buffer-move)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;
@@ -254,7 +255,11 @@ Usa powerline para outros modos."
 (define-key emacs-lisp-mode-map (kbd "<f5>") 'eval-buffer)
 (define-key lisp-mode-map (kbd "<f5>") 'slime-eval-buffer)
 
-
+(require 'buffer-move)
+(global-set-key (kbd "<C-S-up>")     'buf-move-up)
+(global-set-key (kbd "<C-S-down>")   'buf-move-down)
+(global-set-key (kbd "<C-S-left>")   'buf-move-left)
+(global-set-key (kbd "<C-S-right>")  'buf-move-right)
 (global-set-key (kbd "<pause>") 'ilm-pomodoro-set-timer)
 
 (provide 'ilm)
