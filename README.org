@@ -49,8 +49,7 @@ escuro.
   | C-c w c    | Executa whitespace cleanup          |
   | <f9>       | Altera para outro frame             |
   | C-x G      | Magit status                        |
-  | M-y        | Helm exibe *kill ring* visual       |
-  | C-c h      | Helm command prefix                 |
+  | M-y        | Exibe *kill ring* visual            |
   | M-<left>   | Scroll janela uma linha para cima   |
   | M-<right>  | Scroll janela uma linha para abaixo |
   | C-c l      | Org mode store link                 |
