@@ -98,12 +98,6 @@
 ;; vue-mode
 (use-package vue-mode)
 
-;; org-bullets
-;;(use-package org-bullets)
-
-;; htmlize
-;;(use-package htmlize)
-
 ;; Markdown
 (use-package markdown-mode)
 
@@ -144,7 +138,7 @@
 (add-hook 'before-save-hook #'whitespace-cleanup)
 
 ;; Org-mode
-(use-package org-mode
+(use-package org-bullets
 	     :init
 	     (require 'org)
 	     (setq org-startup-folded nil)
