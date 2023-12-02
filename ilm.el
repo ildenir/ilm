@@ -222,10 +222,11 @@ Usa powerline para outros modos."
 (recentf-mode t)
 
 ;; projectile
+(require 'projectile)
+(projectile-mode t)
 (setq projectile-project-search-path '("~/Projects/"
 				       "~/Projetos/"
 				       "~/ilm/"))
-(add-hook 'find-file-hook 'projectile-discover-projects-in-directory)
 
 
 ;;;;;;;;;;;;;;;;;;
