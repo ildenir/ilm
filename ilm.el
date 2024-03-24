@@ -123,7 +123,7 @@ Usa powerline para outros modos."
 			  (projroot (ilm--project-root (buffer-file-name)))
 			  (center (list (powerline-raw "%m" face0 'l)))
 			  (rhs (list (powerline-raw "(%l" face0 'l)
-				 (powerline-raw ":" face0 'l)
+				 (powerline-raw "," face0 'l)
 				 (powerline-raw "%c)" face0 'l)
 				 (powerline-raw (concat "#" (number-to-string (ilm--loc)) " ")
 						face0 'l)))
