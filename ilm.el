@@ -170,11 +170,15 @@
 (add-hook 'prog-mode-hook #'column-enforce-mode)
 
 ;; company
-(require 'company)
-(add-hook 'after-init-hook 'global-company-mode)
+(use-package company
+  :config
+  (require 'company)
+  (add-hook 'after-init-hook 'global-company-mode))
 
 ;; eglot
-(add-hook 'c-mode-hook #'eglot-ensure)
+(use-package eglot
+  :config
+  (add-hook 'c-mode-hook #'eglot-ensure))
 
 ;; ilm-front-screen
 (require 'ilm-front-screen)
