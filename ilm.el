@@ -104,7 +104,7 @@
 ;; Powerline
 
 (use-package powerline
-  :init
+  :config
   (require 'ilm-powerline)
   (require 'ilm-misc)
   (ilm-mode-line)
@@ -118,7 +118,7 @@
 
 ;; Ivy
 (use-package ivy
-	     :init
+	     :config
 	     (require 'ivy)
 	     (ivy-mode)
 	     (setq ivy-use-virtual-buffers t)
@@ -126,7 +126,7 @@
 
 ;; Yasnippet
 (use-package yasnippet
-	     :init
+	     :config
 	     (require 'yasnippet)
 	     (yas-global-mode 1))
 
@@ -137,7 +137,7 @@
 
 ;; Org-mode
 (use-package org-bullets
-	     :init
+	     :config
 	     (require 'org)
 	     (setq org-startup-folded nil)
 	     (require 'org-bullets)
@@ -146,7 +146,7 @@
 
 ;; Paredit
 (use-package paredit
-	     :init
+	     :config
 	     (require 'paredit)
 	     (add-hook 'lisp-mode-hook #'paredit-mode)
 	     (add-hook 'emacs-lisp-mode-hook #'paredit-mode)
@@ -154,7 +154,7 @@
 
 ;; Flycheck
 (use-package flycheck
-	     :init
+	     :config
 	     (require 'flycheck)
 	     (global-flycheck-mode))
 
@@ -181,7 +181,7 @@
 
 ;; All-the-icons
 (use-package all-the-icons
-	     :init (require 'all-the-icons))
+	     :config (require 'all-the-icons))
 
 ;; Magit
 (use-package magit
