@@ -159,44 +159,51 @@
 	     (global-flycheck-mode))
 
 ;; Colunm enforce
-(setq column-enforce-comments nil)
-(add-hook 'lisp-mode-hook #'column-enforce-mode)
-(add-hook 'emacs-lisp-mode-hook #'column-enforce-mode)
-(add-hook 'emacs-lisp-mode-hook #'(lambda ()
-				    (outline-minor-mode t)
-				    (setq outline-regexp ";;;\s+")))
-(add-hook 'lisp-interaction-mode-hook #'column-enforce-mode)
-(add-hook 'c-mode-hook #'column-enforce-mode)
-(add-hook 'prog-mode-hook #'column-enforce-mode)
+(use-package column-enforce-column
+  :config
+  (setq column-enforce-comments nil)
+  (add-hook 'lisp-mode-hook #'column-enforce-mode)
+  (add-hook 'emacs-lisp-mode-hook #'column-enforce-mode)
+  (add-hook 'emacs-lisp-mode-hook #'(lambda ()
+				      (outline-minor-mode t)
+				      (setq outline-regexp ";;;\s+")))
+  (add-hook 'lisp-interaction-mode-hook #'column-enforce-mode)
+  (add-hook 'c-mode-hook #'column-enforce-mode)
+  (add-hook 'prog-mode-hook #'column-enforce-mode))
 
 ;; company
 (use-package company
+  :defer t
   :config
   (require 'company)
   (add-hook 'after-init-hook 'global-company-mode))
 
 ;; eglot
 (use-package eglot
+  :defer t
   :config
   (add-hook 'c-mode-hook #'eglot-ensure))
-
-;; ilm-front-screen
-(require 'ilm-front-screen)
 
 ;; All-the-icons
 (use-package all-the-icons
 	     :config (require 'all-the-icons))
 
+;; ilm-front-screen
+(require 'ilm-front-screen)
+
 ;; Magit
 (use-package magit
-	     :bind ( "C-x G" . magit-status))
+  :defer t
+  :bind ( "C-x G" . magit-status))
+
 ;;
 (use-package switch-window
-	     :bind
-	     (("C-x 1" . witch-window-then-maximize)
-	      ("C-x 2" . witch-window-then-split-below)
-	      ("C-x 3" . witch-window-then-split-right)
-	      ("C-x 0" . vwitch-window-then-delete)))
+  :defer t
+  :bind
+  (("C-x 1" . witch-window-then-maximize)
+   ("C-x 2" . witch-window-then-split-below)
+   ("C-x 3" . witch-window-then-split-right)
+   ("C-x 0" . vwitch-window-then-delete)))
 
 
 (defun ilm--on-recentf-update ()
