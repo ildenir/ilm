@@ -44,6 +44,7 @@
 (setq backup-inhibited t)
 ;; disable auto save
 (setq auto-save-default nil)
+(setq warning-minimum-level :emergency)
 
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
