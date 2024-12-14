@@ -76,7 +76,6 @@
   (dolist (repo repos)
     (add-to-list 'package-archives repo)))
 
-
 (defun ilm-install-packages(&rest packs)
   "Instala pacotes PACKS se necessario."
   (dolist (pack packs)
@@ -87,7 +86,7 @@
 	  (package-install pack t)
 	(error (message "error handling") (package-refresh-contents) (package-install pack))))))
 
-(ilm-install-packages 'use-package)
+(ilm-install-packages 'use-package 'column-enforce-mode)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;
@@ -170,20 +169,16 @@
 	     (global-flycheck-mode))
 
 ;; Colunm enforce
-(use-package column-enforce-column
-  :ensure t
-  :defer t
-  :config
-  (setq column-enforce-comments nil)
+(setq column-enforce-comments nil)
 
-  (add-hook 'lisp-mode-hook #'column-enforce-mode)
-  (add-hook 'emacs-lisp-mode-hook #'column-enforce-mode)
-  (add-hook 'emacs-lisp-mode-hook #'(lambda ()
-				      (outline-minor-mode t)
-				      (setq outline-regexp ";;;\s+")))
-  (add-hook 'lisp-interaction-mode-hook #'column-enforce-mode)
-  (add-hook 'c-mode-hook #'column-enforce-mode)
-  (add-hook 'prog-mode-hook #'column-enforce-mode))
+(add-hook 'lisp-mode-hook #'column-enforce-mode)
+(add-hook 'emacs-lisp-mode-hook #'column-enforce-mode)
+(add-hook 'emacs-lisp-mode-hook #'(lambda ()
+				    (outline-minor-mode t)
+				    (setq outline-regexp ";;;\s+")))
+(add-hook 'lisp-interaction-mode-hook #'column-enforce-mode)
+(add-hook 'c-mode-hook #'column-enforce-mode)
+(add-hook 'prog-mode-hook #'column-enforce-mode)
 
 ;; company
 (use-package company
