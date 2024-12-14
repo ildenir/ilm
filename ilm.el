@@ -96,14 +96,17 @@
 (require 'use-package)
 
 ;; vue-mode
-(use-package vue-mode)
+(use-package vue-mode
+  :ensure t)
 
 ;; Markdown
-(use-package markdown-mode)
+(use-package markdown-mode
+  :ensure t)
 
 ;; Powerline
 
 (use-package powerline
+  :ensure t
   :config
   (require 'ilm-powerline)
   (require 'ilm-misc)
@@ -114,10 +117,12 @@
 
 ;; Neotree
 (use-package neotree
+  :ensure t
 	     :bind ("<f8>" . neotree-toggle))
 
 ;; Ivy
 (use-package ivy
+  :ensure t
 	     :config
 	     (require 'ivy)
 	     (ivy-mode)
@@ -126,12 +131,14 @@
 
 ;; Yasnippet
 (use-package yasnippet
+  :ensure t
 	     :config
 	     (require 'yasnippet)
 	     (yas-global-mode 1))
 
 ;; Whitespace
 (use-package whitespace
+  :ensure t
   :config
   (require 'whitespace)
   (setq whitespace-action '(auto-cleanup))
@@ -139,6 +146,7 @@
 
 ;; Org-mode
 (use-package org-bullets
+  :ensure t
 	     :config
 	     (require 'org)
 	     (setq org-startup-folded nil)
@@ -147,6 +155,7 @@
 
 ;; Paredit
 (use-package paredit
+  :ensure t
 	     :config
 	     (require 'paredit)
 	     (add-hook 'lisp-mode-hook #'paredit-mode)
@@ -155,12 +164,14 @@
 
 ;; Flycheck
 (use-package flycheck
+  :ensure t
 	     :config
 	     (require 'flycheck)
 	     (global-flycheck-mode))
 
 ;; Colunm enforce
 (use-package column-enforce-column
+  :ensure t
   :defer t
   :config
   (setq column-enforce-comments nil)
@@ -176,6 +187,7 @@
 
 ;; company
 (use-package company
+  :ensure t
   :defer t
   :config
   (require 'company)
@@ -183,11 +195,13 @@
 
 ;; eglot
 (use-package eglot
+  :ensure t
   :defer t
   :hook (c-mode . eglot-ensure))
 
 ;; All-the-icons
 (use-package all-the-icons
+  :ensure t
 	     :config (require 'all-the-icons))
 
 ;; ilm-front-screen
@@ -195,11 +209,13 @@
 
 ;; Magit
 (use-package magit
+  :ensure t
   :defer t
   :bind ( "C-x G" . magit-status))
 
 ;;
 (use-package switch-window
+  :ensure t
   :defer t
   :bind
   (("C-x 1" . witch-window-then-maximize)
