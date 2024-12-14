@@ -218,10 +218,10 @@
   :ensure t
   :defer t
   :bind
-  (("C-x 1" . witch-window-then-maximize)
-   ("C-x 2" . witch-window-then-split-below)
-   ("C-x 3" . witch-window-then-split-right)
-   ("C-x 0" . vwitch-window-then-delete)))
+  (("C-x 1" . switch-window-then-maximize)
+   ("C-x 2" . switch-window-then-split-below)
+   ("C-x 3" . switch-window-then-split-right)
+   ("C-x 0" . switch-window-then-delete)))
 
 
 (defun ilm--on-recentf-update ()
