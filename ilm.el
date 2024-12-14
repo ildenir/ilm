@@ -131,9 +131,11 @@
 	     (yas-global-mode 1))
 
 ;; Whitespace
-(require 'whitespace)
-(setq whitespace-action '(auto-cleanup))
-(add-hook 'before-save-hook #'whitespace-cleanup)
+(use-package whitespace
+  :config
+  (require 'whitespace)
+  (setq whitespace-action '(auto-cleanup))
+  :hook (before-save . whitespace-cleanup))
 
 ;; Org-mode
 (use-package org-bullets
@@ -142,7 +144,6 @@
 	     (setq org-startup-folded nil)
 	     (require 'org-bullets)
 	     (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
-
 
 ;; Paredit
 (use-package paredit
@@ -160,8 +161,10 @@
 
 ;; Colunm enforce
 (use-package column-enforce-column
+  :defer t
   :config
   (setq column-enforce-comments nil)
+
   (add-hook 'lisp-mode-hook #'column-enforce-mode)
   (add-hook 'emacs-lisp-mode-hook #'column-enforce-mode)
   (add-hook 'emacs-lisp-mode-hook #'(lambda ()
@@ -181,8 +184,7 @@
 ;; eglot
 (use-package eglot
   :defer t
-  :config
-  (add-hook 'c-mode-hook #'eglot-ensure))
+  :hook (c-mode . eglot-ensure))
 
 ;; All-the-icons
 (use-package all-the-icons
