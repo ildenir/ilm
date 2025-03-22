@@ -132,9 +132,12 @@
 ;; Yasnippet
 (use-package yasnippet
   :ensure t
-	     :config
-	     (require 'yasnippet)
-	     (yas-global-mode 1))
+  :config
+  (require 'yasnippet)
+  (setq yas-snippet-dirs
+	`(,(expand-file-name "~/Projetos/yasnippet-snippets/snippets")
+	  ,(expand-file-name "~/.ilm.d/snippets")))
+  (yas-global-mode 1))
 
 ;; Whitespace
 (use-package whitespace
@@ -187,7 +190,8 @@
   :defer t
   :config
   (require 'company)
-  (add-hook 'after-init-hook 'global-company-mode))
+  (add-hook 'after-init-hook 'global-company-mode)
+  (add-hook 'after-init-hook 'company-yasnippet))
 
 ;; eglot
 (use-package eglot
