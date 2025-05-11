@@ -233,6 +233,14 @@
 (add-hook 'recentf-mode-hook 'ilm--on-recentf-update)
 (recentf-mode t)
 
+;; Org babel
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((shell . t)
+   ))
+
+(add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
+
 
 ;;;;;;;;;;;;;;;;;;
 ;; Keybindings  ;;
