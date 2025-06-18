@@ -47,8 +47,7 @@ The ILM project is a repository on GitHub that contains my personal Emacs config
   | C-c w c    | Run whitespace cleanup         |
   | <f9>       | Alternate other frame          |
   | C-x G      | Magit status                   |
-  | M-y        | Helm show *kill ring* visual   |
-  | C-c h      | Helm command prefix            |
+  | M-y        | Show *kill ring* visual        |
   | M-<left>   | Scroll window one line up      |
   | M-<right>  | Scroll window one line down    |
   | C-c l      | Org mode store link            |
@@ -62,4 +61,6 @@ The ILM project is a repository on GitHub that contains my personal Emacs config
  - [[https://github.com/syl20bnr/spacemacs][Spacemacs]]  : vim based ux distro
 
 * Referencia
-- [[http:tuhdo.github.io/helm-intro.html][A Package in a league of its own]]
+ - [[http:tuhdo.github.io/helm-intro.html][A Package in a league of its own]]
+ - [[https://gitlab.com/dwt1/configuring-emacs][Dwt - Config emacs]]
+ - [[https://github.com/tuhdo/emacs-c-ide-demo][emacs-c-ide]]

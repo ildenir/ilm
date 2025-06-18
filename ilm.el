@@ -44,6 +44,7 @@
 (setq backup-inhibited t)
 ;; disable auto save
 (setq auto-save-default nil)
+(setq warning-minimum-level :emergency)
 
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
@@ -76,9 +77,8 @@
   (dolist (repo repos)
     (add-to-list 'package-archives repo)))
 
-
 (defun ilm-install-packages(&rest packs)
-  "Instala pacotes se necessario."
+  "Instala pacotes PACKS se necessario."
   (dolist (pack packs)
     (message (format "Processando %s" (symbol-name pack)))
     (unless (package-installed-p pack)
@@ -97,101 +97,88 @@
 ;;;;;;;;;;;;;;;;;;;;;;
 ;; Config packages  ;;
 ;;;;;;;;;;;;;;;;;;;;;;
+(require 'use-package)
+
+;; vue-mode
+(use-package vue-mode
+  :ensure t)
+
+;; Markdown
+(use-package markdown-mode
+  :ensure t)
 
 ;; Powerline
-(require 'powerline)
-(require 'ilm-misc)
 
-(defun ilm-mode-line ()
-  "Mode line simplificada para modos comuns como cc-mode.
-Usa powerline para outros modos."
-  (interactive)
-  (setq-default mode-line-format
-		'("%e"
-		  (:eval
-		   (let* ((active (powerline-selected-window-active))
-			  (mode-line-buffer-id (if active 'mode-line-buffer-id 'mode-line-buffer-id-inactive))
-			  (mode-line (if active 'mode-line 'mode-line-inactive))
-			  (face0 (if active 'powerline-active0 'powerline-inactive0))
-			  (face1 (if active 'powerline-active1 'powerline-inactive1))
-			  (face2 (if active 'powerline-active2 'powerline-inactive2))
-			  (separator-left (intern (format "powerline-%s-%s"
-							  (powerline-current-separator)
-							  (car powerline-default-separator-dir))))
-			  (separator-right (intern (format "powerline-%s-%s"
-							   (powerline-current-separator)
-							   (cdr powerline-default-separator-dir))))
-			  (projroot (ilm--project-root (buffer-file-name)))
-			  (center (list (powerline-raw "%m" face0 'l)))
-			  (rhs (list (powerline-raw "(%l" face0 'l)
-				 (powerline-raw ":" face0 'l)
-				 (powerline-raw "%c)" face0 'l)
-				 (powerline-raw (concat "#" (number-to-string (ilm--loc)) " ")
-						face0 'l)))
-			  (lhs (list
-				 (powerline-raw "    " face0)
-				 (when (buffer-modified-p) (powerline-raw "%* " face0 'l))
-				 (cond
-				  ((not (null projroot))
-				   (powerline-raw (concat
-						   (all-the-icons-icon-for-file (buffer-file-name) :v-adjust 0)
-						   " "
-						   (file-name-as-directory
-						    (file-name-nondirectory (directory-file-name projroot)))
-						   (file-relative-name (buffer-file-name) projroot))))
-				  (t (powerline-raw "%b" face0 'l)))
-				 (powerline-raw " " face0)
-				 (when active
-				   (powerline-raw (concat
-						   (ilm-pomodoro/icon)
-						   (ilm-pomodoro/elapse-time)))
-				   ))))
-		     (concat  (powerline-render lhs)
-			      (powerline-fill-center face0 (/ (powerline-width center) 2.0))
-			      (powerline-render center)
-			      (powerline-fill face0 (powerline-width rhs))
-			      (powerline-render rhs)))))))
-(ilm-mode-line)
-(set-face-attribute 'mode-line nil :box '(:line-width 4 :color "#444444"))
-(set-face-attribute 'mode-line-inactive nil
-		    :box '(:line-width 4 :color "#444444"))
+(use-package powerline
+  :ensure t
+  :config
+  (require 'ilm-powerline)
+  (require 'ilm-misc)
+  (ilm-mode-line)
+  (set-face-attribute 'mode-line nil :box '(:line-width 4 :color "#444444"))
+  (set-face-attribute 'mode-line-inactive nil
+		      :box '(:line-width 4 :color "#444444")))
 
 ;; Neotree
-(require 'neotree)
+(use-package neotree
+  :ensure t
+	     :bind ("<f8>" . neotree-toggle))
 
 ;; Ivy
-(ivy-mode)
-(setq ivy-use-virtual-buffers t)
-(setq enable-recursive-minibuffers t)
+(use-package ivy
+  :ensure t
+	     :config
+	     (require 'ivy)
+	     (ivy-mode)
+	     (setq ivy-use-virtual-buffers t)
+	     (setq enable-recursive-minibuffers t))
 
 ;; Yasnippet
-(require 'yasnippet)
-(yas-global-mode 1)
+(use-package yasnippet
+  :ensure t
+  :config
+  (require 'yasnippet)
+  (setq yas-snippet-dirs
+	`(,(expand-file-name "~/Projetos/yasnippet-snippets/snippets")
+	  ,(expand-file-name "~/.ilm.d/snippets")))
+  (yas-global-mode 1))
 
 ;; Whitespace
-(require 'whitespace)
-(setq whitespace-action '(auto-cleanup))
-(add-hook 'before-save-hook #'whitespace-cleanup)
+(use-package whitespace
+  :ensure t
+  :config
+  (require 'whitespace)
+  (setq whitespace-action '(auto-cleanup))
+  :hook (before-save . whitespace-cleanup))
 
 ;; Org-mode
-(require 'org)
-(setq org-startup-folded nil)
-(require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-
+(use-package org-bullets
+  :ensure t
+	     :config
+	     (require 'org)
+	     (setq org-startup-folded nil)
+	     (require 'org-bullets)
+	     (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 ;; Paredit
-(require 'paredit)
-(add-hook 'lisp-mode-hook #'paredit-mode)
-(add-hook 'emacs-lisp-mode-hook #'paredit-mode)
-(add-hook 'lisp-interaction-mode-hook #'paredit-mode)
+(use-package paredit
+  :ensure t
+	     :config
+	     (require 'paredit)
+	     (add-hook 'lisp-mode-hook #'paredit-mode)
+	     (add-hook 'emacs-lisp-mode-hook #'paredit-mode)
+	     (add-hook 'lisp-interaction-mode-hook #'paredit-mode))
 
 ;; Flycheck
-(require 'flycheck)
-(global-flycheck-mode)
+(use-package flycheck
+  :ensure t
+	     :config
+	     (require 'flycheck)
+	     (global-flycheck-mode))
 
 ;; Colunm enforce
 (setq column-enforce-comments nil)
+
 (add-hook 'lisp-mode-hook #'column-enforce-mode)
 (add-hook 'emacs-lisp-mode-hook #'column-enforce-mode)
 (add-hook 'emacs-lisp-mode-hook #'(lambda ()
@@ -202,11 +189,24 @@ Usa powerline para outros modos."
 (add-hook 'prog-mode-hook #'column-enforce-mode)
 
 ;; company
-(require 'company)
-(add-hook 'after-init-hook 'global-company-mode)
+(use-package company
+  :ensure t
+  :defer t
+  :config
+  (require 'company)
+  (add-hook 'after-init-hook 'global-company-mode)
+  (add-hook 'after-init-hook 'company-yasnippet))
 
 ;; eglot
-(add-hook 'c-mode-hook #'eglot-ensure)
+(use-package eglot
+  :ensure t
+  :defer t
+  :hook (c-mode . eglot-ensure))
+
+;; All-the-icons
+(use-package all-the-icons
+  :ensure t
+	     :config (require 'all-the-icons))
 
 ;; ilm-front-screen
 (require 'ilm-front-screen)
@@ -232,11 +232,10 @@ Usa powerline para outros modos."
 ;;;;;;;;;;;;;;;;;;
 ;; Keybindings  ;;
 ;;;;;;;;;;;;;;;;;;
-(global-set-key (kbd "C-x G") 'magit-status)
+
 (global-set-key (kbd "C-c w w") 'whitespace-mode)
 (global-set-key (kbd "C-c w c") 'whitespace-cleanup)
 (global-set-key (kbd "<f9>") 'other-frame)
-(global-set-key (kbd "<f8>") 'neotree-toggle)
 (global-set-key (kbd "<f12>") 'recompile)
 
 (global-set-key (kbd "M-<left>") 'scroll-up-line )
@@ -254,11 +253,6 @@ Usa powerline para outros modos."
 (global-set-key (kbd "M-0") 'delete-window)
 (global-set-key (kbd "M-o") 'other-window)
 
-(require 'switch-window)
-(global-set-key (kbd "C-x 1") 'switch-window-then-maximize)
-(global-set-key (kbd "C-x 2") 'switch-window-then-split-below)
-(global-set-key (kbd "C-x 3") 'switch-window-then-split-right)
-(global-set-key (kbd "C-x 0") 'switch-window-then-delete)
 (define-key emacs-lisp-mode-map (kbd "<f5>") 'eval-buffer)
 (define-key lisp-mode-map (kbd "<f5>") 'slime-eval-buffer)
 

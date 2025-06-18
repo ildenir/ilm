@@ -49,8 +49,7 @@ escuro.
   | C-c w c    | Executa whitespace cleanup          |
   | <f9>       | Altera para outro frame             |
   | C-x G      | Magit status                        |
-  | M-y        | Helm exibe *kill ring* visual       |
-  | C-c h      | Helm command prefix                 |
+  | M-y        | Exibe *kill ring* visual            |
   | M-<left>   | Scroll janela uma linha para cima   |
   | M-<right>  | Scroll janela uma linha para abaixo |
   | C-c l      | Org mode store link                 |
@@ -65,4 +64,6 @@ escuro.
  - [[https://github.com/syl20bnr/spacemacs][Spacemacs]]  : distribuicao ux baseada no vim
 
 * Referencia
-- [[http:tuhdo.github.io/helm-intro.html][A Package in a league of its own]]
+ - [[http:tuhdo.github.io/helm-intro.html][A Package in a league of its own]]
+ - [[https://gitlab.com/dwt1/configuring-emacs][Dwt - Config emacs]]
+ - [[https://github.com/tuhdo/emacs-c-ide-demo][emacs-c-ide]]
