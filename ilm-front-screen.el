@@ -33,9 +33,6 @@
 (require 'ilm-misc)
 (require 'recentf)
 (require 'all-the-icons)
-(require 'dashboard)
-
-
 
 (defun ilm-front-screen--recent-projects ()
   "Retorna lista diretorios de projetos recentes.
@@ -100,14 +97,7 @@ Entende-se projeto como qualquer diretorio com diretorio .git."
 (defun ilm-front-screen-switch-buffer ()
   "Altera buffer para tela inicial."
   (let ((buf (get-buffer ilm-front-screen-buffer-name)))
-    (dashboard-setup-startup-hook)
-    (setq dashboard-banner-logo-title "ILM -- dot Emacs")
-    (setq dashboard-display-icons-p t)
-    (setq dashboard-icon-type 'all-the-icons)
-    (setq dashboard-startup-banner nil)
-    ;(setq dashboard-set-heading-icons t)
-    (setq dashboard-set-file-icons t)
-    (setq dashboard-items '((projects . 5) (recents  . 5)))))
+    ))
 
 (provide 'ilm-front-screen)
 

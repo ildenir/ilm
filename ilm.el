@@ -208,6 +208,12 @@
   :ensure t
 	     :config (require 'all-the-icons))
 
+;; projectile
+(require 'projectile)
+(projectile-mode t)
+(setq projectile-project-search-path '("~/Projects/"
+				       "~/Projetos/"
+				       "~/ilm/"))
 ;; ilm-front-screen
 (require 'ilm-front-screen)
 (require 'all-the-icons)
@@ -221,12 +227,21 @@
 (add-hook 'recentf-mode-hook 'ilm--on-recentf-update)
 (recentf-mode t)
 
-;; projectile
-(require 'projectile)
-(projectile-mode t)
-(setq projectile-project-search-path '("~/Projects/"
-				       "~/Projetos/"
-				       "~/ilm/"))
+;; dashboard
+(use-package dashboard
+  :ensure t
+  :config
+  (require 'all-the-icons)
+  (require 'dashboard)
+
+  (dashboard-setup-startup-hook)
+  (setq dashboard-banner-logo-title "ILM -- dot Emacs")
+  (setq dashboard-display-icons-p t)
+  (setq dashboard-icon-type 'all-the-icons)
+  (setq dashboard-startup-banner 'ascii)
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-items '((projects . 5) (recents  . 9))))
 
 
 ;;;;;;;;;;;;;;;;;;
